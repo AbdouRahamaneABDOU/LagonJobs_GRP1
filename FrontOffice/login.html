@@ -7,33 +7,40 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <nav>
-        <a href="index.html">Accueil</a>
-        <a href="offres.html">Offres</a>
-        <a href="contact.html">Contact</a>
-        <a href="login.html">Connexion</a>
-    </nav>
-    <br>
+    <header class="site-header">
+        <main class="header-inner">
+            <nav class="nav">
+                <b>LagonJobs</b>
+                <a href="index.html">Accueil</a>
+                <a href="offres.html">Offres</a>
+                <a href="contact.html">Contact</a>
+                <a href="login.html" class="btn">Connexion</a>
+            </nav>
+        </main>
+    </header>
 
-    <section>
+    <section class="center">
         <h1>Connexion</h1>
 
-        <form action="" method="get">
+        <form action="" method="get" class="form">
             <label for="mail">Email</label>
             <input type="email" name="mail" required>
 
             <label for="mdp">Mot de passe</label>
             <input type="password" name="mdp" required>
 
-            <button type="submit">Se connecter</button>
-            <button type="submit">Créer un compte</button>
-            <a href="">Mot de passe oublié ?</a>
+            <button type="submit" class="btn">Se connecter</button>
+            <button type="submit" class="btn">Créer un compte</button>
+
+            <p><a href="">Mot de passe oublié ?</a></p>
         </form>
     </section>
 </body>
-<footer>
-    <!--Racourci clavier Copyright © : alt + 0169  -->
-    <p> © 2025 LagonJobs - Tous droits réservés </p> 
-    <p> Confidentialité Conditions <a href="contact.html">Nous contacter</a> </p>
+<footer class="site-footer">
+    <div class="footer-inner">
+        <!--Racourci clavier Copyright © : alt + 0169  -->
+        <p> © 2025 LagonJobs - Tous droits réservés </p> 
+        <b> Confidentialité  <a href="contact.html">Nous contacter</a> </b>
+    </div>
 </footer>
 </html>
