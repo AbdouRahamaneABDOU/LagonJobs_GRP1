@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <nav>
@@ -11,6 +12,34 @@
         <a href="offres.html">Offres</a>
         <a href="contact.html">Contact</a>
     </nav>
+
+    <h1>Contact</h1>
+    <p>Une question ? Envoyez-nous un message et un administrateur vous répondra. </p>
+
+    <nav>
+      <form action="" method="GET" class="form">
+        <P><label for="Nom">Nom</label>
+        <input type="text" required name="Nom" >
+
+        <label for="Email">Email</label>
+        <input type="text" required name="Email" ></P>
+
+        <P><label for="Sujet">Sujet</label>
+        <input type="text" required name="Sujet" class="form label" ></P>
+
+       <P><label for="Message">Message</label>
+        <textarea name="Message" required rows="5" cols="50"></textarea></P> 
+
+        <button type="submit" name="ajouter" class="btn">Envoyer</button>
+        <button type="submit" name="Suprimer" value="" class="btn">Effacer</button>
+      </form>
+    </nav>    
+   
+
     
 </body>
+ <footer class="site-footer">
+    <p> © 2025 LagonJobs- Tous droits réservées</p>
+    <p>Confidentialité Nous contacter</p>
+</footer>
 </html>
