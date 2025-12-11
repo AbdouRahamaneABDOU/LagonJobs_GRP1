@@ -16,31 +16,34 @@
                 <a href="offres.html">Offres</a>
                 <a href="contact.html">Contact</a>
                 <a href="login.html" class="btn btn-outline">Connexion</a>
-                <a href="inscription.html" class="btn btn-outline">Inscription</a>
             </nav>
         </div>
     </header>
     <section class="hero">
-        <div class=" container ">
-            <h1>Connexion</h1>
+        <div class="container center">
+            <div class="stack auth-card">
+                <h1>Connexion</h1>
+            
+                <form action="" method="get" class="form ">
+                    <label for="mail">Email</label>
+                    <input type="email" name="mail" required>
 
-            <form action="" method="get" class="form">
-                <label for="mail">Email</label>
-                <input type="email" name="mail" required>
+                    <label for="mdp" class="stack actions">Mot de passe</label>
+                    <input type="password" name="mdp" required >
 
-                <label for="mdp">Mot de passe</label>
-                <input type="password" name="mdp" required>
+                    <button type="submit" class="btn actions">Se connecter</button>
+                    <button type="submit" class="btn">Créer un compte</button>
 
-                <button type="submit" class="btn">Se connecter</button>
-                <button type="submit" class="btn">Créer un compte</button>
+                    
 
-                <p><a href="">Mot de passe oublié ?</a></p>
-            </form>
+                    <a href="" class="stack actions">Mot de passe oublié ?</a>
+                </form>
+            </div>
         </div>
     </section>
 </body>
 <footer class="site-footer">
-    <div class="footer-inner">
+    <div class="container footer-inner">
         <!--Racourci clavier Copyright © : alt + 0169  -->
         <p> © 2025 LagonJobs - Tous droits réservés </p> 
         <b> Confidentialité  <a href="contact.html">Nous contacter</a> </b>
