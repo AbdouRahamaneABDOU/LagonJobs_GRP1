@@ -113,3 +113,13 @@ a:hover{color:var(--lagon)}
   .filter-bar{grid-template-columns: repeat(2, 1fr)}
   .nav{gap:.6rem}
 }
+
+.tag {
+  border: 1px solid #ccc;   /* contour gris clair */
+  background-color: white;  /* fond blanc */
+  padding: 4px 12px;        /* taille du pill */
+  border-radius: 20px;      /* arrondi type "pill" */
+  font-size: 14px;
+  cursor: pointer;
+}
+
