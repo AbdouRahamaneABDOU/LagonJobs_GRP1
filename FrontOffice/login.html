@@ -8,32 +8,35 @@
 </head>
 <body>
     <header class="site-header">
-        <main class="header-inner">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <span class="wave"></span>Lagon<span>Jobs</span>
             <nav class="nav">
-                <b>LagonJobs</b>
                 <a href="index.html">Accueil</a>
                 <a href="offres.html">Offres</a>
                 <a href="contact.html">Contact</a>
-                <a href="login.html" class="btn">Connexion</a>
+                <a href="login.html" class="btn btn-outline">Connexion</a>
+                <a href="inscription.html" class="btn btn-outline">Inscription</a>
             </nav>
-        </main>
+        </div>
     </header>
+    <section class="hero">
+        <div class=" container ">
+            <h1>Connexion</h1>
 
-    <section class="center">
-        <h1>Connexion</h1>
+            <form action="" method="get" class="form">
+                <label for="mail">Email</label>
+                <input type="email" name="mail" required>
 
-        <form action="" method="get" class="form">
-            <label for="mail">Email</label>
-            <input type="email" name="mail" required>
+                <label for="mdp">Mot de passe</label>
+                <input type="password" name="mdp" required>
 
-            <label for="mdp">Mot de passe</label>
-            <input type="password" name="mdp" required>
+                <button type="submit" class="btn">Se connecter</button>
+                <button type="submit" class="btn">Créer un compte</button>
 
-            <button type="submit" class="btn">Se connecter</button>
-            <button type="submit" class="btn">Créer un compte</button>
-
-            <p><a href="">Mot de passe oublié ?</a></p>
-        </form>
+                <p><a href="">Mot de passe oublié ?</a></p>
+            </form>
+        </div>
     </section>
 </body>
 <footer class="site-footer">
