@@ -4,34 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page d'inscription</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <h1>Inscription</h1>
-    <nav>
-        <a href="index.html">Accueil</a>
-        <a href="offres.html">Offres</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-<br><br>
-    <form action="login.html" method="GET">
-    <label for="">Prénom :</label>
-    <input type="text">
+    <!-- HEADER -->
+        <header class="site-header">
+            <div class="container header-inner">
+                <a class="logo" href="index.html">
+                    <span class="wave"></span>Lagon<span>Jobs</span>
+                </a>
 
-    <label for="">Nom :</label>
-    <input type="text"><br>
+                <nav class="nav">
+                    <a href="index.html">Accueil</a>
+                    <a href="offres.html" class="btn btn-outline">Offres</a>
+                    <a href="contact.html" class="btn btn-outline">Contact</a>
+                </nav>
+            </div>
+        </header>
 
-    <label for="">Email :</label>
-    <input type="mail"><br>
+    <section class="hero">
+            <div class="container">
+            <h1>Inscription</h1>
+            
 
-    <label for="">Mot de passe :</label>
-    <input type="password"><br>
+            <form action="login.html" method="GET" class="form">
 
-    <label for="">Confirmer :</label>
-    <input type="password"><br>
+                <div class="row">
+                    <div>
+                        <label for="">Prénom :</label>
+                        <input type="text">
+                    </div>
 
-    </form>
+                    <div>
+                        <label for="">Nom :</label>
+                        <input type="text">
+                    </div>
+                </div>
 
-    <button type="submit">Créer mon compte</button>
-    <button type="submit">Déjà inscrit ? </button>
+                <label for="">Email :</label>
+                <input type="mail">
+
+                <div class="row">
+                    <div>
+                        <label for="">Mot de passe :</label>
+                        <input type="password">
+                    </div>
+
+                    <div>
+                        <label for="">Confirmer :</label>
+                        <input type="password">
+                    </div>
+                </div>
+
+                
+                <button type="submit" class="btn actions">Créer mon compte</button>
+                <button type="submit" class="btn">Déjà inscrit ? </button>
+            
+            </form>
+    </section>
 </body>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <p>© 2025 LagonJobs — Tous droits réservés</p>
+        <b> Confidentialité  <a href="contact.html">Nous contacter</a> </b>
+    </div>
+</footer>
+
 </html>

@@ -46,7 +46,11 @@ a:hover{color:var(--lagon)}
 .btn-outline{background:transparent; color:var(--lagon-dark)}
 .btn-outline:hover{background:var(--lagon); color:#fff}
 
+<<<<<<< HEAD
 /*  HEADER  */
+=======
+
+>>>>>>> c9ebe83a394694d62a2e585933acc34176a44f59
 .site-header{
   position:sticky;
   top:0;
@@ -226,6 +230,10 @@ a:hover{color:var(--lagon)}
   .nav{gap:.6rem}
 }
 
+<<<<<<< HEAD
 @media (max-width:600px){
   .form .row{grid-template-columns:1fr}
 }
+=======
+
+>>>>>>> c9ebe83a394694d62a2e585933acc34176a44f59

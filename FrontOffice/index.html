@@ -3,79 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page d'accueil</title>
+    <title>LagonJobs – Accueil</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
-    <h1>Accueil -- LagonJobs</h1>
-    <nav>
-        <a href="index.html">Accueil</a>
-        <a href="offres.html">Offres</a>
-        <a href="contact.html">Contact</a>
-    </nav>
 
-<h1>Trouver votre stage ou emploi facilement</h1>
-<p>Des offres claires et à jour, pour étudiants et jeunes <br>
-     diplômés. Recherchez par mot clé, lieu, type de <br>
-      contrat et télétravail.</p>
-<p><strong>Pourquoi LagonJobs ?</strong><p>
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="index.html">
+                <span class="wave"></span>Lagon<span>Jobs</span>
+            </a>
 
-<ul>
-    <li>Annoce adaptées aux profils SIO</li>
-    <li>Interface simple et tojule</li>
-    <li>Back-Office pour administrateurs</li>
-</ul>
-<p>Astuce -- créer un compte pour sauvegarder des offres (plus tard)</p>
+            <nav class="nav">
+                <a href="index.html">Accueil</a>
+                <a href="offres.html">Offres</a>
+                <a href="contact.html">Contact</a>
+                <a href="login.html" class="btn btn-outline">Connexion</a>
+                <a href="inscription.html" class="btn btn-outline">Inscription</a>
+            </nav>
+        </div>
+    </header>
 
-<form action="" method=="">
-<label for="Motcle"></label>
-<input type="text" placeholder="Mot-clé (ex. PHP, support, réseau)" name="MotCle">
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container grid">
+            
+            <div>
+                <h1>Trouvez votre stage ou emploi facilement</h1>
+                <p>
+                    Des offres claires et à jour, pour étudiants et jeunes diplômés.  
+                    Recherchez par mot-clé, lieu, type de contrat et télétravail.
+                </p>
+                <form class="search-inline card" action="" method="GET">
+                    <input type="text" placeholder="Mot-clé (ex : PHP, support, réseau)" name="motcle">
+                    <input type="text" placeholder="Ville (ex : Mamoudzou)" name="ville">
 
-<label for="ville"></label>
-<input type="text" placeholder="Ville (ex. Mamoudzou)" name="NomVille">
+                    <select name="contrat">
+                        <option selected>Type de contrat</option>
+                        <option>CDI</option>
+                        <option>CDD</option>
+                        <option>Stage</option>
+                    </select>
 
-<label for="Contrat"></label>
-<select name="TypeContrat">
-    <option value="1" selected> Type de contrat</option>
-    <option value="2">CDI</option>
-    <option value="3">CDD</option>
-    <option value="3">Stage</option>
+                    <select name="teletravail">
+                        <option selected>Télétravail</option>
+                        <option>Sur site</option>
+                        <option>Hybride</option>
+                    </select>
 
-</select>
+                    <button class="btn" type="submit">Rechercher</button>
+                </form>
+            </div>
 
-<label for="teltravail"></label>
-<select name="Teletravail">
-    <option value="1" selected>Télétravail</option>
-    <option value="2">Sur site</option>
-    <option value="3">Hybride</option>
-</select>
-<button type="submit">Rechercher</button>
+            <div class="card">
 
-<br><br><br>
 
-<h2>Dernières offres</h2>
-<article>
-<p><strong>Stagiaire</strong> <br> <strong>Developpeur Web</strong></p>
-<p>Mamoudou - Hybride</p>
-<p>Participer au développement <br> et é-commerce.</p>
-</article>
-<button type="submit">Voir</button>
+                <p><strong>Pourquoi LagonJobs ?</strong></p>
 
-<article>
-<p><strong>Technicien support</strong></p>
-<p>Dzaoudzi - Hybride</p>
-<p>Assistance virtueuse. <br> inductions etc. <br> Maintenace etc.</p>
-</article>
-<button type="submit">Voir</button>
+                <ul>
+                    <li>Annonces adaptées aux profils SIO</li>
+                    <li>Interface simple et lisible</li>
+                    <li>Back-office pour administrateurs</li>
+                </ul>
+                <p>Astuce - Créer un compte pour sauvegarder des offices (plus tard).</p>
+            </div>
+        </div>
+    </section>
 
-<article>
-<p><strong>Admin systemes junior</strong></p>
-<p>Koungou - Télétravail</p>
-<p>Administration Linx/Windows <br> sauvegarde à suivre.</p>
-</article>
-<button type="submit">Voir</button>
+    <!-- SECTION OFFRES -->
+    <section class="section">
+        <div class="container">
+            <h2>Dernières offres</h2>
 
-</form>
+            <div class="cards">
+
+                <article class="card">
+                    <p class="badge">Stage</p>
+                    <h3>Stagiaire – Développeur Web</h3>
+                    <p class="meta">Mamoudzou - Hybride</p>
+                    <p>Participer au développement du site e-commerce.</p>
+                    <a class="btn btn-outline" href="#">Voir</a>
+                </article>
+
+                <article class="card">
+                    <p class="badge">CDD</p>
+                    <h3>Technicien Support</h3>
+                    <p class="meta">Dzaoudzi - Hybride</p>
+                    <p>Assistance utilisateur, maintenance du matériel IT.</p>
+                    <a class="btn btn-outline" href="#">Voir</a>
+                </article>
+
+                <article class="card">
+                    <p class="badge">CDI</p>
+                    <h3>Admin Systèmes Junior</h3>
+                    <p class="meta">Koungou - Télétravail</p>
+                    <p>Gestion serveurs Linux / Windows, sauvegardes.</p>
+                    <a class="btn btn-outline" href="#">Voir</a>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
 </body>
-<br><br>
-<footer>© 20205 LagonJobs - Tous droits reservés Confidentialité Condition <a href="contact.html"> Nous contacter</a></footer>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <p>© 2025 LagonJobs — Tous droits réservés</p>
+        <b> Confidentialité  <a href="contact.html">Nous contacter</a> </b>
+    </div>
+</footer>
+
 </html>
