@@ -5,35 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
     <link rel="stylesheet" href="../css/style.css">
+
 </head>
 <body>
-    <nav>
+<header class="site-header">
+  <div class="container">
+    <div class="header-inner">
+    
+      <a href="index.html" class="logo">
+        <img src="../img/Logo.png" alt="LagonJobs">
+      </a>
+
+      <nav class="nav">
         <a href="index.html">Accueil</a>
         <a href="offres.html">Offres</a>
-        <a href="contact.html">Contact</a>
-    </nav>
+        <a href="login.html" class="btn">Connexion</a>
+        <a href="inscription.html" class="btn">Inscription</a>
+      </nav>
+
+    </div>
+  </div>
+</header>
 
     <h1>Contact</h1>
     <p>Une question ? Envoyez-nous un message et un administrateur vous répondra. </p>
 
-    <nav>
-      <form action="" method="GET" class="form">
-        <P><label for="Nom">Nom</label>
-        <input type="text" required name="Nom" >
+  <form action="" method="GET" class="form">
 
-        <label for="Email">Email</label>
-        <input type="text" required name="Email" ></P>
+  <div class="row">
+    <label>
+      Nom
+      <input type="text" name="Nom" required>
+    </label>
 
-        <P><label for="Sujet">Sujet</label>
-        <input type="text" required name="Sujet" class="form label" ></P>
+    <label>
+      Email
+      <input type="email" name="Email" required>
+    </label>
+  </div>
 
-       <P><label for="Message">Message</label>
-        <textarea name="Message" required rows="5" cols="50"></textarea></P> 
+  <label>
+    Sujet
+    <input type="text" name="Sujet" required>
+  </label>
 
-        <button type="submit" name="ajouter" class="btn">Envoyer</button>
-        <button type="submit" name="Suprimer" value="" class="btn">Effacer</button>
-      </form>
-    </nav>    
+  <label>
+    Message
+    <textarea name="Message" required></textarea>
+  </label>
+
+  <div class="actions">
+    <button type="submit" class="btn">Envoyer</button>
+    <button type="reset" class="btn">Effacer</button>
+  </div>
+
+</form>
+   
    
 
     
