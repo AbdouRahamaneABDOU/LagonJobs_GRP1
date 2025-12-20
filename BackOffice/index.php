@@ -51,7 +51,7 @@
                     </form>
                 </div>
         </section>
-    </header>
+        
 </body>
 <footer class="site-footer">
     <div class="container footer-inner">
