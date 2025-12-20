@@ -19,6 +19,7 @@
                 
             </nav>
         </div>
+    </header>
 
         <section class="hero">
             <div class="container">
@@ -30,33 +31,33 @@
                 <div class="container">
             
                     <form action="offres.html" method="get" class="search-inline">
-                        <label for="add">Ajouter</label>
-                        <input type="text" name="add">
+                        <label for="ajout">+Ajouter</label>
+                        <input type="text" name="ajout">
 
                         <label for="listbox" name="status">Status</label>
                         <select name="type">
                             <option value="0">Publiée</option>
                         </select>
 
-                        <label for="listbox" name="categorie">
+                        <label for="listbox" name="categorie">Catégorie</label>
                         <select name="ville">
-                            <option value="0">Ville</option>
-                            <option value="1">Mamoudzou</option>
-                            <option value="2">Cavani</option>
+                            <option value="0"></option>
                         </select>
 
-                        <label for="listbox" name="teletravail">
-                        <select name="">
-                            <option value="1">Télétravail</option>
-                            <option value="2">Bureau</option>
-                        </select>
-            
+                    
                         <button type="submit" class="btn">Filtrer</button>
                         <button type="reset" class="btn">Réinitialiser</button>
-                    
+                       
                     </form>
                 </div>
         </section>
     </header>
 </body>
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <p>© 2025 LagonJobs — Tous droits réservés</p>
+        <b> Confidentialité  <a href="contact.html">Nous contacter</a> </b>
+    </div>
+</footer>
+
 </html>
