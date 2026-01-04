@@ -1,3 +1,14 @@
+<?php
+
+require_once(__DIR__ . '/bdd.php');
+
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +61,20 @@
                        
                     </form>
                 </div>
+
+                <br>
+                <br>
+                <hr>
+                <table class="container">
+                    <th>Titre</th>
+                    <th>Status</th>
+                    <th>Catégorie</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </table>
+                <hr>
         </section>
+
         
 </body>
 <footer class="site-footer">

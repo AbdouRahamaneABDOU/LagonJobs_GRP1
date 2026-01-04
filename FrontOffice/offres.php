@@ -1,3 +1,7 @@
+<?php
+require_once(__DIR__ . '/bdd.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +17,7 @@
                 <span class="wave"></span>Lagon<span>Jobs</span>
             <nav class="nav">
                 <a href="index.html">Accueil</a>
-                <a href="offres.html">Offres</a>
+                <a href="offres.php">Offres</a>
                 <a href="contact.html">Contact</a>
                 <a href="login.html" class="btn btn-outline">Connexion</a>
                 <a href="inscription.html" class="btn btn-outline">Inscription</a>
@@ -68,9 +72,9 @@
                         <p>Mamoudzou - Hybride</p>
                     
                         <p>Participer au développement des sites vitrine et e-commerce.</p>
-                        <form action="" method="get">
-                            <button type="submit" class="btn btn-outline">Détail</button>
-                        </form>  
+                        
+                        <a href="detail_offre.php" class="btn btn-outline">Détail</a>
+                        
                     </article>  
 
                     <article class="card">
@@ -80,9 +84,7 @@
                         <p>Dzaoudzi - Sur site</p>
                     
                         <p>Assistance utilisateur, résolution d'incidents et maintenance</p>
-                        <form action="" method="get">
-                            <button type="submit" class="btn btn-outline">Détail</button>
-                        </form>    
+                        <a href="detail_offre.php" class="btn btn-outline">Détail</a>    
                 
                     </article>
 
@@ -93,9 +95,7 @@
                         <p>Koungou - Hybride</p>
                     
                         <p>Administration Linux/Windows, sauvegardes et supervision</p>
-                        <form action="" method="get">
-                            <button type="submit" class="btn btn-outline">Détail</button>
-                        </form>  
+                        <a href="detail_offre.php" class="btn btn-outline">Détail</a>
                     </article>
                 </div>  
             
