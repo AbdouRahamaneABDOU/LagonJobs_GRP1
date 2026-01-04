@@ -6,7 +6,7 @@ require_once(__DIR__ . '/bdd.php');
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"  content="width=device-width, initial-scale=1.0">
     <title>Offres</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -27,36 +27,17 @@ require_once(__DIR__ . '/bdd.php');
 
     <section class="hero">
         <div class="container">
-        <h1>Contact</h1>
+        <h1>Postuler</h1>
 
             <form action="" method="GET" class="form">
 
-                <div class="row">
-                    <label>
-                        Nom
-                        <input type="text" name="Nom" required>
-                    </label>
+                <label>Sujet</label>
+                <input type="text" name="Sujet">
+                
 
-                    <label>
-                        Email
-                        <input type="email" name="Email" required>
-                    </label>
-                </div>
-
-                <label>
-                Sujet
-                <input type="text" name="Sujet" required>
-                </label>
-
-                <label>
-                Message
-                <textarea name="Message" required></textarea>
-                </label>
-
-                <div class="actions">
-                    <button type="submit" class="btn">Envoyer</button>
-                    <button type="reset" class="btn">Effacer</button>
-                </div>
+                <label>Message</label>
+                <textarea name="Message" placeholder="Description"></textarea>
+                <button type="submit" class="btn">Envoyer</button>
 
             </form> 
         </div>
