@@ -26,34 +26,34 @@
         <div class="container">
         <h1>Contact</h1>
 
-                <form action="" method="GET" class="form">
+            <form action="" method="GET" class="form">
 
-                    <div class="row">
-                        <label>
-                            Nom
-                            <input type="text" name="Nom" required>
-                        </label>
-
-                        <label>
-                            Email
-                            <input type="email" name="Email" required>
-                        </label>
-                    </div>
-
+                <div class="row">
                     <label>
-                    Sujet
-                    <input type="text" name="Sujet" required>
+                        Nom
+                        <input type="text" name="Nom" required>
                     </label>
 
                     <label>
-                    Message
-                    <textarea name="Message" required></textarea>
+                        Email
+                        <input type="email" name="Email" required>
                     </label>
+                </div>
 
-                    <div class="actions">
-                        <button type="submit" class="btn">Envoyer</button>
-                        <button type="reset" class="btn">Effacer</button>
-                    </div>
+                <label>
+                Sujet
+                <input type="text" name="Sujet" required>
+                </label>
+
+                <label>
+                Message
+                <textarea name="Message" required></textarea>
+                </label>
+
+                <div class="actions">
+                    <button type="submit" class="btn">Envoyer</button>
+                    <button type="reset" class="btn">Effacer</button>
+                </div>
 
             </form> 
         </div>
