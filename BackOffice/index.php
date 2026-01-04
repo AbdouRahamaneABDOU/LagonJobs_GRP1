@@ -16,7 +16,6 @@
                 <a href="user.php">Utilisateurs</a>
                 <a href="offre.php">Offres</a>
                 <a href="contacts.php">Contact</a>
-                
             </nav>
         </div>
     </header>
@@ -51,7 +50,6 @@
                     </form>
                 </div>
         </section>
-    </header>
 </body>
 <footer class="site-footer">
     <div class="container footer-inner">
