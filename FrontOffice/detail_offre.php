@@ -27,16 +27,17 @@ require_once(__DIR__ . '/bdd.php');
 
     <section class="hero">
         <div class="container">
-            <a href="offres.html">← Retour aux offres</a>
+            <a href="offres.php">← Retour aux offres</a>
 </br>   
 </br>
             <div >
                 <p class="badge btn">Stage</p>
-                <h3> Stagiaire Développeur Web</h2>
+                <h1> Stagiaire Développeur Web</h1>
             
-                <p>Mamoudzou - Hybride</p>
+                <p>Mamoudzou - Hybride - 3 à 6 mois </p>
             
-                <p>Participer au développement des sites vitrine et e-commerce.</p>
+                <p><b>Missions</b> : Intégrer des maquettes, corriger les bugs, participer aux revues de codes (niveau débutant)</p>
+                <p><b>Profil </b>: motivation, bases HTML/CSS/JS, notions PHP bienvenues</p>
                 <a href="postuler.php" class="btn btn-outline">Postuler</a>
                 <a href="offres.php" class="btn btn-outline">Autres offres</a>  
             </div>  
