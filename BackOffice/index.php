@@ -3,6 +3,7 @@
 require_once(__DIR__ . '/bdd.php');
 
 
+
 ?>
 
 
@@ -70,14 +71,10 @@ require_once(__DIR__ . '/bdd.php');
                     <th>Catégorie</th>
                     <th>Description</th>
                     <th>Actions</th>
+               
                 </table>
                 <hr>
         </section>
-<<<<<<< HEAD
-=======
-
-        
->>>>>>> bc9d8066ca6db529bab08b0933b5fed1bb3fd74e
 </body>
 <footer class="site-footer">
     <div class="container footer-inner">
