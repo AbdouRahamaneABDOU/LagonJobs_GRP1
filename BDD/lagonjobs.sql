@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 20 déc. 2025 à 17:36
+-- Généré le : sam. 10 jan. 2026 à 17:42
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -49,6 +49,33 @@ CREATE TABLE `contrats` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `offres`
+--
+
+CREATE TABLE `offres` (
+  `Id` int(11) NOT NULL,
+  `Id_Titre` int(11) NOT NULL,
+  `Categorie` varchar(50) NOT NULL,
+  `Ville` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `titre`
+--
+
+CREATE TABLE `titre` (
+  `Id` int(11) NOT NULL,
+  `Titre` varchar(100) NOT NULL,
+  `Description` text NOT NULL,
+  `Missions` text NOT NULL,
+  `Profil` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `utilisateurs`
 --
 
@@ -77,6 +104,18 @@ ALTER TABLE `contrats`
   ADD PRIMARY KEY (`Id`);
 
 --
+-- Index pour la table `offres`
+--
+ALTER TABLE `offres`
+  ADD PRIMARY KEY (`Id`);
+
+--
+-- Index pour la table `titre`
+--
+ALTER TABLE `titre`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- Index pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
@@ -96,6 +135,18 @@ ALTER TABLE `administrateurs`
 -- AUTO_INCREMENT pour la table `contrats`
 --
 ALTER TABLE `contrats`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `offres`
+--
+ALTER TABLE `offres`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `titre`
+--
+ALTER TABLE `titre`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
