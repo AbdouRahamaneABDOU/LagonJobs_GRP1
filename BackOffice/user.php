@@ -20,6 +20,102 @@
             </nav>
         </div>
     </header>
+
+    <!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <h1>Gestion des utilisateurs</h1>
+    <p>Gérer les comptes des candidats, utilisateurs et administrateurs.</p>
+
+    <!-- Filtres -->
+    <form class="search-inline form" method="get">
+      <div>
+        <label for="search">Rechercher</label>
+        <input type="text" id="search" name="search" placeholder="Nom ou email">
+      </div>
+
+      <div>
+        <label for="role">Rôle</label>
+        <select id="role" name="role">
+          <option value="">Tous</option>
+          <option value="user">Utilisateur</option>
+          <option value="admin">Administrateur</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="status">Statut</label>
+        <select id="status" name="status">
+          <option value="">Tous</option>
+          <option value="actif">Publiée</option>
+          <option value="suspendu">Suspendu</option>
+        </select>
+      </div>
+
+      <button class="btn">Filtrer</button>
+      <button type="reset" class="btn">Réinitialiser</button>
+    </form>
+  </div>
+</section>
+
+<!-- LISTE DES UTILISATEURS -->
+<section class="section">
+  <div class="container">
+    <div class="card">
+      <h2>Liste des utilisateurs</h2>
+
+      <table width="100%" cellpadding="10">
+        <thead>
+          <tr>
+            <th align="left">Nom</th>
+            <th align="left">Email</th>
+            <th align="left">Rôle</th>
+            <th align="left">Statut</th>
+            <th align="left">Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>Azaly </td>
+            <td>azalymahaviteny@email.com</td>
+            <td><span class="badge">Utilisateur</span></td>
+            <td><span class="badge">Publiée</span></td>
+            <td>
+              <a href="" class="badge">Modifier</a>
+              <a href="" class="badge">Suspendre</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Abdou R.</td>
+            <td>Abdou-rahamane@outlook.com</td>
+            <td><span class="badge">Utilisateur</span></td>
+            <td><span class="badge">Publiée</span></td>
+            <td>
+              <a href="" class="badge">Modifier</a>
+              <a href="" class="badge">Suspendre</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>Djanfar</td>
+            <td>djanfar@bana.fr</td>
+            <td><span class="badge">Administrateur</span></td>
+            <td><span class="badge">Publiée</span></td>
+            <td>
+              <a href="" class="badge">Modifier</a>
+              <a href="" class="badge">Suspendre</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</section>
+
+
 <body>
     <footer class="site-footer">
     <div class="container footer-inner">
