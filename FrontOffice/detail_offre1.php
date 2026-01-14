@@ -19,7 +19,7 @@ require_once(__DIR__ . '/bdd.php');
                 <a href="index.php">Accueil</a>
                 <a href="offres.php">Offres</a>
                 <a href="contact.html">Contact</a>
-                <a href="login.html" class="btn btn-outline">Connexion</a>
+                <a href="login.php" class="btn btn-outline">Connexion</a>
                 <a href="inscription.html" class="btn btn-outline">Inscription</a>
             </nav>
         </div>

@@ -1,3 +1,16 @@
+<?php
+require_once(__DIR__ . '/bdd.php');
+
+if(isset($_GET['envoi'])){
+    if(!empty($_GET['mail']) AND !empty($_GET['mdp'])){
+
+    }else{
+        echo "Veuillez compléter tous les champs... ";
+    }
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,13 +22,13 @@
 <body>
     <header class="site-header">
         <div class="container header-inner">
-            <a href="index.html" class="logo">
+            <a href="index.php" class="logo">
                 <span class="wave"></span>Lagon<span>Jobs</span>
             <nav class="nav">
                 <a href="index.php">Accueil</a>
                 <a href="offres.php">Offres</a>
                 <a href="contact.html">Contact</a>
-                <a href="login.html" class="btn btn-outline">Connexion</a>
+                <a href="login.php" class="btn btn-outline">Connexion</a>
             </nav>
         </div>
     </header>
@@ -24,14 +37,14 @@
             <div class="stack auth-card">
                 <h1>Connexion</h1>
             
-                <form action="index.html" method="get" class="form ">
+                <form action="index.php" method="get" class="form ">
                     <label for="mail">Email</label>
                     <input type="email" name="mail">
 
                     <label for="mdp" class="stack actions">Mot de passe</label>
                     <input type="password" name="mdp" >
 
-                    <button type="submit" class="btn actions">Se connecter</button>
+                    <input type="submit" name="envoi" class="btn actions">Se connecter </input>
                     <button type="submit" class="btn">Créer un compte</button>
 
                     
