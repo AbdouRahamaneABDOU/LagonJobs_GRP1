@@ -37,15 +37,15 @@ if(isset($_GET['envoi'])){
             <div class="stack auth-card">
                 <h1>Connexion</h1>
             
-                <form action="index.php" method="get" class="form ">
+                <form action="" method="get" class="form ">
                     <label for="mail">Email</label>
                     <input type="email" name="mail">
 
                     <label for="mdp" class="stack actions">Mot de passe</label>
                     <input type="password" name="mdp" >
 
-                    <input type="submit" name="envoi" class="btn actions">Se connecter </input>
-                    <button type="submit" class="btn">Créer un compte</button>
+                    <button type="submit" name="envoi" class="btn actions">Se connecter </button>
+                    <button type="submit" class="btn">Créer un compte </button>
 
                     
 
