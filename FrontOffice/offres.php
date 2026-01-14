@@ -13,14 +13,14 @@ require_once(__DIR__ . '/bdd.php');
 <body>
     <header class="site-header">
         <div class="container header-inner">
-            <a href="index.html" class="logo">
+            <a href="index.php" class="logo">
                 <span class="wave"></span>Lagon<span>Jobs</span>
             <nav class="nav">
                 <a href="index.php">Accueil</a>
                 <a href="offres.php">Offres</a>
-                <a href="contact.html">Contact</a>
+                <a href="contact.php">Contact</a>
                 <a href="login.php" class="btn btn-outline">Connexion</a>
-                <a href="inscription.html" class="btn btn-outline">Inscription</a>
+                <a href="inscription.php" class="btn btn-outline">Inscription</a>
             </nav>
         </div>
     </header>
@@ -32,7 +32,7 @@ require_once(__DIR__ . '/bdd.php');
 
             <div class="container">
         
-                <form action="offres.html" method="get" class="search-inline card">
+                <form action="offres.php" method="get" class="search-inline card">
                     <input type="text" placeholder="Mot-clé">
 
                     <label for="listbox" name="type">
@@ -108,7 +108,7 @@ require_once(__DIR__ . '/bdd.php');
     <div class="container footer-inner">
         <!--Racourci clavier Copyright © : alt + 0169  -->
         <p> © 2025 LagonJobs - Tous droits réservés </p> 
-        <b> Confidentialité <a href="contact.html">Nous contacter</a> </b>
+        <b> Confidentialité <a href="contact.php">Nous contacter</a> </b>
     </div>
 </footer>
 </html>

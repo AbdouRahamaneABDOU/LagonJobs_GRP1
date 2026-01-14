@@ -27,7 +27,7 @@ if(isset($_GET['envoi'])){
             <nav class="nav">
                 <a href="index.php">Accueil</a>
                 <a href="offres.php">Offres</a>
-                <a href="contact.html">Contact</a>
+                <a href="contact.php">Contact</a>
                 <a href="login.php" class="btn btn-outline">Connexion</a>
             </nav>
         </div>
@@ -59,7 +59,7 @@ if(isset($_GET['envoi'])){
     <div class="container footer-inner">
         <!--Racourci clavier Copyright © : alt + 0169  -->
         <p> © 2025 LagonJobs - Tous droits réservés </p> 
-        <b> Confidentialité  <a href="contact.html">Nous contacter</a> </b>
+        <b> Confidentialité  <a href="contact.php">Nous contacter</a> </b>
     </div>
 </footer>
 </html>

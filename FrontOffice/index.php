@@ -28,16 +28,16 @@ $modetravail = $mdtrvlStatement->fetchAll();
     <!-- HEADER -->
     <header class="site-header">
         <div class="container header-inner">
-            <a class="logo" href="index.html">
+            <a class="logo" href="index.php">
                 <span class="wave"></span>Lagon<span>Jobs</span>
             </a>
 
             <nav class="nav">
                 <a href="index.php">Accueil</a>
                 <a href="offres.php">Offres</a>
-                <a href="contact.html">Contact</a>
+                <a href="contact.php">Contact</a>
                 <a href="login.php" class="btn btn-outline">Connexion</a>
-                <a href="inscription.html" class="btn btn-outline">Inscription</a>
+                <a href="inscription.php" class="btn btn-outline">Inscription</a>
             </nav>
         </div>
     </header>
@@ -134,7 +134,7 @@ $modetravail = $mdtrvlStatement->fetchAll();
 <footer class="site-footer">
     <div class="container footer-inner">
         <p>© 2025 LagonJobs — Tous droits réservés</p>
-        <b> Confidentialité  <a href="contact.html">Nous contacter</a> </b>
+        <b> Confidentialité  <a href="contact.php">Nous contacter</a> </b>
     </div>
 </footer>
 
