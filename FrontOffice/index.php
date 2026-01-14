@@ -1,3 +1,19 @@
+<?php
+require_once(__DIR__ . '/bdd.php');
+
+
+$sqlQuery = 'SELECT * FROM contrats';
+$contratsStatement = $mysqlClient->prepare($sqlQuery);
+$contratsStatement->execute();
+$contrats = $contratsStatement->fetchAll();
+
+$sqlQuery = 'SELECT * FROM modetravail';
+$mdtrvlStatement = $mysqlClient->prepare($sqlQuery);
+$mdtrvlStatement->execute();
+$modetravail = $mdtrvlStatement->fetchAll();
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -41,16 +57,21 @@
                     <input type="text" placeholder="Ville (ex : Mamoudzou)" name="ville">
 
                     <select name="contrat">
-                        <option selected>Type de contrat</option>
-                        <option>CDI</option>
-                        <option>CDD</option>
-                        <option>Stage</option>
+                    <option selected>TypeContrat</option>
+                   <?php
+                    for ($i = 0; $i < count($contrats); $i++) {
+                        echo '<option value= "'.$contrats[$i]['Id'].'">'.$contrats[$i]['TypeContrat'].' </option>';
+                        } 
+                    ?>
                     </select>
 
-                    <select name="teletravail">
-                        <option selected>Télétravail</option>
-                        <option>Sur site</option>
-                        <option>Hybride</option>
+                    <select name="modetravail">
+                        <option selected>ModeTravail</option>
+                        <?php
+                        for ($i = 0; $i < count($modetravail); $i++) {
+                            echo '<option value= "'.$modetravail[$i]['Id'].'">'.$modetravail[$i]['NomModeTravail'].' </option>';
+                            } 
+                    ?>
                     </select>
 
                     <button class="btn" type="submit">Rechercher</button>

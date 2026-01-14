@@ -52,8 +52,10 @@
         </select>
       </div>
 
-      <button class="btn">Filtrer</button>
-      <button type="reset" class="btn">Réinitialiser</button>
+      <div class="actions">
+        <button class="btn">Filtrer</button>
+        <button type="reset" class="btn">Réinitialiser</button>
+      </div>
     </form>
   </div>
 </section>
@@ -82,8 +84,8 @@
             <td><span class="badge">Utilisateur</span></td>
             <td><span class="badge">Publiée</span></td>
             <td>
-              <a href="" class="badge">Modifier</a>
-              <a href="" class="badge">Suspendre</a>
+              <a href="" class="">Modifier</a>
+              <a href="" class="">Suspendre</a>
             </td>
           </tr>
 
@@ -93,8 +95,8 @@
             <td><span class="badge">Utilisateur</span></td>
             <td><span class="badge">Publiée</span></td>
             <td>
-              <a href="" class="badge">Modifier</a>
-              <a href="" class="badge">Suspendre</a>
+              <a href="" class="">Modifier</a>
+              <a href="" class="">Suspendre</a>
             </td>
           </tr>
 
@@ -104,8 +106,8 @@
             <td><span class="badge">Administrateur</span></td>
             <td><span class="badge">Publiée</span></td>
             <td>
-              <a href="" class="badge">Modifier</a>
-              <a href="" class="badge">Suspendre</a>
+              <a href="" class="">Modifier</a>
+              <a href="" class="">Suspendre</a>
             </td>
           </tr>
         </tbody>
