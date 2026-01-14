@@ -6,7 +6,7 @@ require_once(__DIR__ . '/bdd.php');
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"  content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Offres</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -27,25 +27,25 @@ require_once(__DIR__ . '/bdd.php');
 
     <section class="hero">
         <div class="container">
-        <h1>Postuler</h1>
-
-            <form action="" method="GET" class="form">
-
-                <label>Sujet</label>
-                <input type="text" name="Sujet">
-                
-
-                <label>Message</label>
-                <textarea name="Message" placeholder="Description"></textarea>
-                <button type="submit" class="btn">Envoyer</button>
-
-            </form> 
+            <a href="offres.php">← Retour aux offres</a>
+</br>   
+</br>
+            <div >
+                <p class="badge btn">CDI</p>
+                <h1>Admin Systèmes Junior</h1>
+            
+                <p>Koungou - Télétravail</p>
+            
+                <p><b>Missions</b> : Gérer les comptes utilisateurs (création, suppression, droits d’accès)</p>
+                <p><b>Profil </b>: Motivé et sérieux, Diplômé d'un BTS SIO (SISR); Windows / Linux, bienvenues</p>
+                <a href="postuler.php" class="btn btn-outline">Postuler</a>
+                <a href="offres.php" class="btn btn-outline">Autres offres</a>  
+            </div>  
+    
         </div>
     </section>
 
-
-
-</body>
+</body><br><br>
 <footer class="site-footer">
     <div class="container footer-inner">
         <!--Racourci clavier Copyright © : alt + 0169  -->

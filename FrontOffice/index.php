@@ -33,7 +33,7 @@ $modetravail = $mdtrvlStatement->fetchAll();
             </a>
 
             <nav class="nav">
-                <a href="index.html">Accueil</a>
+                <a href="index.php">Accueil</a>
                 <a href="offres.php">Offres</a>
                 <a href="contact.html">Contact</a>
                 <a href="login.html" class="btn btn-outline">Connexion</a>
@@ -105,7 +105,7 @@ $modetravail = $mdtrvlStatement->fetchAll();
                     <h3>Stagiaire – Développeur Web</h3>
                     <p class="meta">Mamoudzou - Hybride</p>
                     <p>Participer au développement du site e-commerce.</p>
-                    <a class="btn btn-outline" href="#">Voir</a>
+                    <a class="btn btn-outline" href="detail_offre1.php">Voir</a>
                 </article>
 
                 <article class="card">
@@ -113,7 +113,7 @@ $modetravail = $mdtrvlStatement->fetchAll();
                     <h3>Technicien Support</h3>
                     <p class="meta">Dzaoudzi - Hybride</p>
                     <p>Assistance utilisateur, maintenance du matériel IT.</p>
-                    <a class="btn btn-outline" href="#">Voir</a>
+                    <a class="btn btn-outline" href="detail_offre2.php">Voir</a>
                 </article>
 
                 <article class="card">
@@ -121,7 +121,7 @@ $modetravail = $mdtrvlStatement->fetchAll();
                     <h3>Admin Systèmes Junior</h3>
                     <p class="meta">Koungou - Télétravail</p>
                     <p>Gestion serveurs Linux / Windows, sauvegardes.</p>
-                    <a class="btn btn-outline" href="#">Voir</a>
+                    <a class="btn btn-outline" href="detail_offre3.php">Voir</a>
                 </article>
 
             </div>

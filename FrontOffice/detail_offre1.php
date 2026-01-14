@@ -16,7 +16,7 @@ require_once(__DIR__ . '/bdd.php');
             <a href="index.html" class="logo">
                 <span class="wave"></span>Lagon<span>Jobs</span>
             <nav class="nav">
-                <a href="index.html">Accueil</a>
+                <a href="index.php">Accueil</a>
                 <a href="offres.php">Offres</a>
                 <a href="contact.html">Contact</a>
                 <a href="login.html" class="btn btn-outline">Connexion</a>

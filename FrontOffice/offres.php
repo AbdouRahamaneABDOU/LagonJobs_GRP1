@@ -16,7 +16,7 @@ require_once(__DIR__ . '/bdd.php');
             <a href="index.html" class="logo">
                 <span class="wave"></span>Lagon<span>Jobs</span>
             <nav class="nav">
-                <a href="index.html">Accueil</a>
+                <a href="index.php">Accueil</a>
                 <a href="offres.php">Offres</a>
                 <a href="contact.html">Contact</a>
                 <a href="login.html" class="btn btn-outline">Connexion</a>
@@ -73,7 +73,7 @@ require_once(__DIR__ . '/bdd.php');
                     
                         <p>Participer au développement des sites vitrine et e-commerce.</p>
                         
-                        <a href="detail_offre.php" class="btn btn-outline">Détail</a>
+                        <a href="detail_offre1.php" class="btn btn-outline">Détail</a>
                         
                     </article>  
 
@@ -84,7 +84,7 @@ require_once(__DIR__ . '/bdd.php');
                         <p>Dzaoudzi - Sur site</p>
                     
                         <p>Assistance utilisateur, résolution d'incidents et maintenance</p>
-                        <a href="detail_offre.php" class="btn btn-outline">Détail</a>    
+                        <a href="" class="btn btn-outline">Détail</a>    
                 
                     </article>
 
@@ -95,7 +95,7 @@ require_once(__DIR__ . '/bdd.php');
                         <p>Koungou - Hybride</p>
                     
                         <p>Administration Linux/Windows, sauvegardes et supervision</p>
-                        <a href="detail_offre.php" class="btn btn-outline">Détail</a>
+                        <a href="" class="btn btn-outline">Détail</a>
                     </article>
                 </div>  
             
