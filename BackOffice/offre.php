@@ -24,49 +24,62 @@
     <section class="hero">
 
     <div class="container">
-    <form action="" method="GET" class="form">
+        <form action="" method="GET" class="form">
 
-    <div>
-    <label>
-      Titre
-      <input type="text" name="Sujet" required>
-    </label>
+            <div>
+                <div class="row">
+                    <label>
+                    Titre
+                    <input type="text" name="Sujet" required>
+                    </label>
 
-    <label>
-      description
-      <textarea name="description" required></textarea>
-    </label>
+                    <label>
+                        Ville
+                            <select name="type_contrat" required>
+                                <option value="CDI">Mamoudzou</option>
+                                <option value="CDD">CDD</option>
+                                <option value="Stage">Stage</option>
+                                <option value="Freelance">Freelance</option>
+                            </select>
+                    </label>
+                </div>
 
-    <div class="row">
-        <label>
-         Statut
-            <select name="type_contrat" required>
-                <option value="CDI">publie</option>
-                <option value="CDD">CDD</option>
-                <option value="Stage">Stage</option>
-                <option value="Freelance">Freelance</option>
-            </select>
-        </label>
+                <label>
+                    description
+                    <textarea name="description" required></textarea>
+                </label>
+            </div>
 
-        <label>
-         Catégorie
-            <select name="type_contrat" required>
-                <option value="CDI">catégorie</option>
-                <option value="CDD">CDD</option>
-                <option value="Stage">Stage</option>
-                <option value="Freelance">Freelance</option>
-            </select>
-        </label>
+            <div class="row">
+                <label>
+                Statut
+                    <select name="type_contrat" required>
+                        <option value="CDI">publie</option>
+                        <option value="CDD">CDD</option>
+                        <option value="Stage">Stage</option>
+                        <option value="Freelance">Freelance</option>
+                    </select>
+                </label>
+
+                <label>
+                Catégorie
+                    <select name="type_contrat" required>
+                        <option value="CDI">catégorie</option>
+                        <option value="CDD">CDD</option>
+                        <option value="Stage">Stage</option>
+                        <option value="Freelance">Freelance</option>
+                    </select>
+                </label>
+            </div>
+            
+
+            <div class="actions">
+            <button type="submit" class="btn">Annuler</button>
+            <button type="reset" class="btn">Enregistrer</button>
+            </div>
+
+        </form>
     </div>
-    
-
-    <div class="actions">
-      <button type="submit" class="btn">Annuler</button>
-      <button type="reset" class="btn">Enregistrer</button>
-    </div>
-
-  </form>
-  </div>
    </section>
    
 
