@@ -7,10 +7,10 @@ $contratsStatement = $mysqlClient->prepare($sqlQuery);
 $contratsStatement->execute();
 $contrats = $contratsStatement->fetchAll();
 
-$sqlQuery = 'SELECT * FROM modetravail';
+$sqlQuery = 'SELECT * FROM job';
 $mdtrvlStatement = $mysqlClient->prepare($sqlQuery);
 $mdtrvlStatement->execute();
-$modetravail = $mdtrvlStatement->fetchAll();
+$job = $mdtrvlStatement->fetchAll();
 ?>
 
 
@@ -65,11 +65,11 @@ $modetravail = $mdtrvlStatement->fetchAll();
                     ?>
                     </select>
 
-                    <select name="modetravail">
+                    <select name="job">
                         <option selected>ModeTravail</option>
                         <?php
-                        for ($i = 0; $i < count($modetravail); $i++) {
-                            echo '<option value= "'.$modetravail[$i]['Id'].'">'.$modetravail[$i]['NomModeTravail'].' </option>';
+                        for ($i = 0; $i < count($job); $i++) {
+                            echo '<option value= "'.$job[$i]['Id'].'">'.$job[$i]['NomModeTravail'].' </option>';
                             } 
                     ?>
                     </select>
