@@ -31,12 +31,16 @@ require_once(__DIR__ . '/bdd.php');
 
             <form action="" method="GET" class="form">
 
+                <label>Destinataire</label>
+                <input type="text" name="Sujet">
+
                 <label>Sujet</label>
                 <input type="text" name="Sujet">
                 
-
                 <label>Message</label>
                 <textarea name="Message" placeholder="Description"></textarea>
+
+                <input type="file">
                 <button type="submit" class="btn">Envoyer</button>
 
             </form> 

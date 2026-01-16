@@ -26,6 +26,7 @@ require_once(__DIR__ . '/bdd.php');
             <nav class="nav">
                 <a href="index.php">Tableau de bord</a>
                 <a href="user.php">Utilisateurs</a>
+                <a href="job.php">Métiers</a>
                 <a href="offre.php">Offres</a>
                 <a href="contacts.php">Contact</a>
             </nav>
