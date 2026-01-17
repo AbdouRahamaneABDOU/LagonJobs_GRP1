@@ -3,6 +3,24 @@
 require_once(__DIR__ . '/bdd.php');
 
 
+$sqlQuery = 
+'SELECT of.Id, 
+of.Ville, 
+of.Statut,
+jb.Titre,
+jb.Description,
+jb.Categorie
+FROM offres of 
+JOIN job jb on jb.Id = of.Id_Titre;';
+$SelectOffres=$mysqlClient->prepare($sqlQuery);
+$SelectOffres->execute();
+$Offres=$SelectOffres->fetchAll();
+
+
+$sqlQuery='SELECT * FROM  job';
+$selectjob=$mysqlClient->prepare($sqlQuery);
+$selectjob->execute();
+$Jobs=$selectjob->fetchAll();
 
 ?>
 
@@ -46,7 +64,7 @@ require_once(__DIR__ . '/bdd.php');
                         <label for="ajout">+Ajouter</label>
                         <input type="text" name="ajout">
 
-                        <label for="listbox" name="status">Status</label>
+                        <label for="listbox" name="status">Statut</label>
                         <select name="type">
                             <option value="0">Publiée</option>
                         </select>
@@ -65,16 +83,28 @@ require_once(__DIR__ . '/bdd.php');
 
                 <br>
                 <br>
-                <hr>
+                
                 <table class="container">
-                    <th>Titre</th>
-                    <th>Status</th>
-                    <th>Catégorie</th>
-                    <th>Description</th>
-                    <th>Actions</th>
-               
+                    
+                    <tr>
+                        <th>Titre</th>
+                        <th>Status</th>
+                        <th>Catégorie</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                    <?php /*
+                     for ($i=0;$i<count($Offres);$i++) {
+                    ?>
+                        <tr>
+                            <td><?php echo $Offres[$i]['Titre']?></td>
+                        </tr>
+                    <?php
+                    }
+                    */?>
+
                 </table>
-                <hr>
+                
         </section>
 </body>
 <footer class="site-footer">
