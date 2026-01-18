@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 10 jan. 2026 à 17:42
+-- Généré le : dim. 18 jan. 2026 à 17:59
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -49,28 +49,36 @@ CREATE TABLE `contrats` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `job`
+--
+
+CREATE TABLE `job` (
+  `Id` int(11) NOT NULL,
+  `Titre` varchar(100) NOT NULL,
+  `Description` text NOT NULL,
+  `Missions` text NOT NULL,
+  `Profil` text NOT NULL,
+  `Categorie` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `job`
+--
+
+INSERT INTO `job` (`Id`, `Titre`, `Description`, `Missions`, `Profil`, `Categorie`) VALUES
+(1, 'Stagière Développeur Web', 'Participer au développement des sites vitrine et e-commerce.', 'Intégrer des maquettes, corriger des bugs, participer aux revues de codes (niveau débutant)', 'Motivation, bases HTML/CSS/JS, notions PHP bienvenues', 'Stage');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `offres`
 --
 
 CREATE TABLE `offres` (
   `Id` int(11) NOT NULL,
   `Id_Titre` int(11) NOT NULL,
-  `Categorie` varchar(50) NOT NULL,
-  `Ville` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `titre`
---
-
-CREATE TABLE `titre` (
-  `Id` int(11) NOT NULL,
-  `Titre` varchar(100) NOT NULL,
-  `Description` text NOT NULL,
-  `Missions` text NOT NULL,
-  `Profil` text NOT NULL
+  `Ville` varchar(50) NOT NULL,
+  `Statut` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -104,15 +112,15 @@ ALTER TABLE `contrats`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Index pour la table `offres`
+-- Index pour la table `job`
 --
-ALTER TABLE `offres`
+ALTER TABLE `job`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Index pour la table `titre`
+-- Index pour la table `offres`
 --
-ALTER TABLE `titre`
+ALTER TABLE `offres`
   ADD PRIMARY KEY (`Id`);
 
 --
@@ -138,15 +146,15 @@ ALTER TABLE `contrats`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT pour la table `job`
+--
+ALTER TABLE `job`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT pour la table `offres`
 --
 ALTER TABLE `offres`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT pour la table `titre`
---
-ALTER TABLE `titre`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --

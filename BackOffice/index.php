@@ -93,15 +93,27 @@ $Jobs=$selectjob->fetchAll();
                         <th>Description</th>
                         <th>Actions</th>
                     </tr>
-                    <?php /*
+                    <?php 
                      for ($i=0;$i<count($Offres);$i++) {
                     ?>
                         <tr>
                             <td><?php echo $Offres[$i]['Titre']?></td>
+                            <td><?php echo $Offres[$i]['Statut']?></td>
+                            <td><?php echo $Offres[$i]['Categorie']?></td>
+                            <td><?php echo $Offres[$i]['Description']?></td>
+
+                            <td>
+                            <form action="offre_edit.php" method="POST">
+                                <button type="submit">Éditer</button >
+                            </form>
+                            <form action="eleve.php" method="POST">
+                                <button type="submit">Supprimer</button >
+                            </form>
+                           
                         </tr>
                     <?php
                     }
-                    */?>
+                    ?>
 
                 </table>
                 
