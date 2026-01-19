@@ -1,3 +1,28 @@
+<?php
+require_once(__DIR__ . '/bdd.php');
+
+/*if (isset($_POST['metier']) && !empty($_POST['metier'])
+&& isset($_POST['desciption']) && !empty($_POST['desciption'])
+&& isset($_POST['mission']) && !empty($_POST['mission'])
+&& isset($_POST['profil']) && !empty($_POST['profil'])){
+  $metier=$_POST['metier'];
+  $descrip=$_POST['description'];
+  $mission=$_POST['mission'];
+  $profil=$_POST['profil'];
+  $sqlQuery = 'INSERT INTO job(`Titre`,`Description`,`Titre`,`Titre`) VALUES (:Nom_Classe)';
+  $insertJob = $mysqlClient->prepare($sqlQuery);
+  $insertJob->execute([
+    'Nom_Classe'=>$nom_classe,
+  ]);
+}*/
+
+$sqlQuery='SELECT * FROM  job';
+$selectjob=$mysqlClient->prepare($sqlQuery);
+$selectjob->execute();
+$Jobs=$selectjob->fetchAll();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +56,7 @@
 
                 <div>
                     <label>Titre</label>
-                    <input type="text" name="Sujet" required>
+                    <input type="text" name="metier" required>
                     
                     <label>description</label>
                     <textarea name="description" required></textarea>
@@ -41,7 +66,7 @@
 
                     <label>Profil</label>
                     <textarea name="profil" required></textarea>
-                    
+
                     <button type="submit" class="btn">Ajouter</button>
                     
                 </div>
