@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : sam. 10 jan. 2026 à 17:42
+-- Généré le : lun. 19 jan. 2026 à 15:30
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -49,28 +49,29 @@ CREATE TABLE `contrats` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `offres`
+-- Structure de la table `job`
 --
 
-CREATE TABLE `offres` (
+CREATE TABLE `job` (
   `Id` int(11) NOT NULL,
-  `Id_Titre` int(11) NOT NULL,
-  `Categorie` varchar(50) NOT NULL,
-  `Ville` varchar(50) NOT NULL
+  `Titre` varchar(100) NOT NULL,
+  `Description` text NOT NULL,
+  `Missions` text NOT NULL,
+  `Profil` text NOT NULL,
+  `Categorie` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `titre`
+-- Structure de la table `offres`
 --
 
-CREATE TABLE `titre` (
+CREATE TABLE `offres` (
   `Id` int(11) NOT NULL,
-  `Titre` varchar(100) NOT NULL,
-  `Description` text NOT NULL,
-  `Missions` text NOT NULL,
-  `Profil` text NOT NULL
+  `Id_job` int(11) NOT NULL,
+  `Ville` varchar(50) NOT NULL,
+  `Statut` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -104,15 +105,15 @@ ALTER TABLE `contrats`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Index pour la table `offres`
+-- Index pour la table `job`
 --
-ALTER TABLE `offres`
+ALTER TABLE `job`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Index pour la table `titre`
+-- Index pour la table `offres`
 --
-ALTER TABLE `titre`
+ALTER TABLE `offres`
   ADD PRIMARY KEY (`Id`);
 
 --
@@ -138,15 +139,15 @@ ALTER TABLE `contrats`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `offres`
+-- AUTO_INCREMENT pour la table `job`
 --
-ALTER TABLE `offres`
+ALTER TABLE `job`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `titre`
+-- AUTO_INCREMENT pour la table `offres`
 --
-ALTER TABLE `titre`
+ALTER TABLE `offres`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
