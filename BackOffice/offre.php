@@ -2,15 +2,24 @@
 require_once(__DIR__ . '/bdd.php');
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 2ffac0e ( je vien de afficher les donne sur la la page offre en backoffice)
 $tabl=[];
 $fr=$mysqlClient->prepare('SELECT offres.Id, offres.Id_job, offres.Statut, offres.Ville, 
 job.Titre,job.Categorie, job.Description, job.Missions, job.Profil
  FROM offres LEFT JOIN job ON job.Id = offres.Id_job;');
+<<<<<<< HEAD
  
  $fr->execute();
  $tabl=$fr->fetchAll();
+=======
+$fr->execute();
+$tabl=$fr->fetchAll();
+
+>>>>>>> 2ffac0e ( je vien de afficher les donne sur la la page offre en backoffice)
 
 
 ?>
@@ -76,11 +85,19 @@ job.Titre,job.Categorie, job.Description, job.Missions, job.Profil
 
                 <label>
                 description
+<<<<<<< HEAD
                     <select name="Description" required>
                         <?php
                             for ($i = 0; $i < count($tabl); $i++) {
                                 echo '<option value="'.$tabl[$i]['Description'].'">'. 
                                 $tabl[$i]['Description'].
+=======
+                    <select name="description" required>
+                        <?php
+                            for ($i = 0; $i < count($tabl); $i++) {
+                                echo '<option value="'.$tabl[$i]['description'].'">'. 
+                                $tabl[$i]['description'].
+>>>>>>> 2ffac0e ( je vien de afficher les donne sur la la page offre en backoffice)
                                 '</option>';}
                         ?>
                     </select>
