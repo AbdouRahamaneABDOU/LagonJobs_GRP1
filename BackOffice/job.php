@@ -1,7 +1,7 @@
 <?php
 require_once(__DIR__ . '/bdd.php');
 
-/*if (isset($_POST['metier']) && !empty($_POST['metier'])
+if (isset($_POST['metier']) && !empty($_POST['metier'])
 && isset($_POST['desciption']) && !empty($_POST['desciption'])
 && isset($_POST['mission']) && !empty($_POST['mission'])
 && isset($_POST['profil']) && !empty($_POST['profil'])){
@@ -14,7 +14,7 @@ require_once(__DIR__ . '/bdd.php');
   $insertJob->execute([
     'Nom_Classe'=>$nom_classe,
   ]);
-}*/
+}
 
 $sqlQuery='SELECT * FROM  job';
 $selectjob=$mysqlClient->prepare($sqlQuery);
