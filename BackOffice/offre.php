@@ -4,14 +4,21 @@ require_once(__DIR__ . '/bdd.php');
 
 
 
-$tabl=[];
-$fr=$mysqlClient->prepare('SELECT offres.Id, offres.Id_job, offres.Statut, offres.Ville, 
-job.Titre,job.Categorie, job.Description, job.Missions, job.Profil
- FROM offres LEFT JOIN job ON job.Id = offres.Id_job;');
- 
- $fr->execute();
- $tabl=$fr->fetchAll();
+if (isset($_POST['ajouter']) && !empty($_POST['Titre']) && !empty($_POST['ville']) && !empty($_POST['Description']) && !empty($_POST['statut']) && !empty($_POST['Categorie']))
+{
+    $des=$_POST['Description'];
+    $tr=$_POST['Titre'];
+    $cat=$_POST['Categorie'];
+    $ins=$mysqlClient->prepare('INSERT INTO `job`( Titre, Description, Categorie) VALUES (:Titre, :Description, :Categorie)');
+    $ins->execute ([ 'Titre'=> $tr, 'Description'=>$des, 'Categorie'=>$cat]); 
 
+
+    $vil=$_POST['ville'];
+    $stat=$_POST['statut'];
+    $ins=$mysqlClient->prepare('INSERT INTO `offres`( Ville, Statut) VALUES (:Ville, :Statut)');
+    $ins->execute ([ 'Ville'=> $vil, 'Statut'=>$stat]); 
+
+}
 
 ?>
 
@@ -50,72 +57,37 @@ job.Titre,job.Categorie, job.Description, job.Missions, job.Profil
                 <div class="row">
                     <label>
                         Titre
-                            <select name="Titre" required>
-                                <?php
-                                    for ($i = 0; $i < count($tabl); $i++) {
-                                        echo '<option value="'.$tabl[$i]['Titre'].'">'. 
-                                        $tabl[$i]['Titre'].
-                                        '</option>';}
-                                ?>
-                            </select>
+                            <input type="text" placeholder="Titre (ex : Développeur Web)" name="Titre" required>
                     </label>
 
 
                     <label>
                         Ville
-                            <select name="ville" required>
-                                <?php
-                                    for ($i = 0; $i < count($tabl); $i++) {
-                                        echo '<option value="'.$tabl[$i]['Ville'].'">'. 
-                                        $tabl[$i]['Ville'].
-                                        '</option>';}
-                                ?>
-                            </select>
+                            <input type="text" placeholder="Ville (ex : Mamoudzou)" name="ville" required>
                     </label>
                 </div>
 
                 <label>
-                description
-                    <select name="Description" required>
-                        <?php
-                            for ($i = 0; $i < count($tabl); $i++) {
-                                echo '<option value="'.$tabl[$i]['Description'].'">'. 
-                                $tabl[$i]['Description'].
-                                '</option>';}
-                        ?>
-                    </select>
+                Description
+                    <textarea name="Description" placeholder="Description (ex : Développement et maintenance de site web)" required></textarea>
                 </label>
             </div>
 
             <div class="row">
                 <label>
                 Statut
-                    <select name="statut" required>
-                        <?php
-                            for ($i = 0; $i < count($tabl); $i++) {
-                                echo '<option value="'.$tabl[$i]['Statut'].'">'. 
-                                htmlspecialchars($tabl[$i]['Statut']) .
-                                '</option>';}
-                        ?>
-                    </select>
+                    <input type="text" placeholder="statut (ex : CDI)" name="statut" required>
                 </label>
 
                 <label>
                 Catégorie
-                    <select name="categorie" required>
-                         <?php
-                            for ($i = 0; $i < count($tabl); $i++) {
-                                echo '<option value="'.$tabl[$i]['Categorie'].'">'. 
-                                $tabl[$i]['Categorie'].
-                                '</option>';}
-                         ?>
-                    </select>
+                    <input type="text" placeholder="Categorie (ex : informatique)" name="Categorie" required>
                 </label>
             </div>
             
 
             <div class="actions">
-                <button type="submit" name="Enregistrer" class="btn">Enregistrer</button>
+                <button type="submit" name="ajouter" class="btn">Enregistrer</button>
                 <button type="reset" name="effacer" class="btn">effacer</button>
             </div>
 
