@@ -10,9 +10,15 @@ if (isset($_POST['metier']) && !empty($_POST['metier'])
   $mission=$_POST['mission'];
   $profil=$_POST['profil'];
   $sqlQuery = 'INSERT INTO job(`Titre`,`Description`,`Titre`,`Titre`) VALUES (:Nom_Classe)';
+
+
   $insertJob = $mysqlClient->prepare($sqlQuery);
   $insertJob->execute([
-    'Nom_Classe'=>$nom_classe,
+    'Titre'=>$metier,
+    'Descrip'=>$descrip,
+    'Mission'=>$mission,
+    'Profil'=>$profil,
+    'Cate'=>$cate
   ]);
 }
 
@@ -67,10 +73,60 @@ $Jobs=$selectjob->fetchAll();
                     <label>Profil</label>
                     <textarea name="profil" required></textarea>
 
+                    <label>Catégorie</label>
+                    <input type="text" name="categorie" required>
+
                     <button type="submit" class="btn">Ajouter</button>
                     
                 </div>
             </form>
+
+        </div>
+
+        <div class="container card">
+            <h2>Liste des métiers</h2>
+            <table >
+                <tr>
+                    <th>Métier</th>
+                    <th>Description</th>
+                    <th>Missions</th>
+                    <th>Profil</th>
+                    <th>Catégorie</th>
+                    <th>Actions</th>
+                </tr>
+                <?php
+
+                for ($i=0;$i<count($Jobs);$i++) {
+                ?>  
+                    <tr>
+                        <td>
+                            <?php echo ($i+1); ?>
+                        </td>
+                        <td>
+                            <?php echo $Jobs[$i]['Titre']; ?>
+                        </td>
+                        <td>
+                            <?php echo $Jobs[$i]['Description']; ?>
+                        </td>
+                        <td>
+                             <?php echo $Jobs[$i]['Missions']; ?>
+                        </td>
+                        <td>
+                             <?php echo $Jobs[$i]['Profil']; ?>
+                        </td>
+                        <td>
+                             <?php echo $Jobs[$i]['Categorie']; ?>
+                        </td>
+                         <td>
+                            <button type="submit">Éditer</button >
+                            <button type="submit">Supprimer</button >
+                        </td>
+                       
+                    </tr>
+                <?php
+                }
+                ?>
+            </table>
         </div>
    </section>
    

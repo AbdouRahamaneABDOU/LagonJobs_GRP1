@@ -3,7 +3,6 @@
 require_once(__DIR__ . '/bdd.php');
 
 
-
 $sqlQuery = 
 'SELECT of.Id, 
 of.Ville, 
@@ -22,7 +21,6 @@ $sqlQuery='SELECT * FROM  job';
 $selectjob=$mysqlClient->prepare($sqlQuery);
 $selectjob->execute();
 $Jobs=$selectjob->fetchAll();
-
 
 ?>
 
@@ -99,18 +97,19 @@ $Jobs=$selectjob->fetchAll();
                      for ($i=0;$i<count($Offres);$i++) {
                     ?>
                         <tr>
-                            <td><?php echo $Offres[$i]['Titre']?></td>
+                            <td><?php echo $Offres[$i]['Titre']?></td> 
                             <td><?php echo $Offres[$i]['Statut']?></td>
                             <td><?php echo $Offres[$i]['Categorie']?></td>
                             <td><?php echo $Offres[$i]['Description']?></td>
 
                             <td>
-                            <form action="offre_edit.php" method="POST">
-                                <button type="submit">Éditer</button >
-                            </form>
-                            <form action="eleve.php" method="POST">
-                                <button type="submit">Supprimer</button >
-                            </form>
+                                <form action="offre_edit.php" method="POST">
+                                    <button type="submit">Éditer</button >
+                                </form>
+                                <form action="eleve.php" method="POST">
+                                    <button type="submit">Supprimer</button >
+                                </form>
+                            </td>
                            
                         </tr>
                     <?php
