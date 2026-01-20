@@ -1,12 +1,12 @@
 <?php
 require_once(__DIR__ . '/bdd.php');
 
-if(isset($_GET['metier']) && !empty($_GET['metier']) && isset($_GET['description']) && !empty($_GET['description']) && isset($_GET['mission']) && !empty($_GET['mission']) && isset($_GET['profil']) && !empty($_GET['profil']) && isset($_GET['categorie']) && !empty($_GET['categorie'])){
-  $metier=$_GET['metier'];
-  $descrip=$_GET['description'];
-  $mission=$_GET['mission'];
-  $profil=$_GET['profil'];
-  $cate=$_GET['categorie'];
+if(isset($_POST['metier']) && !empty($_POST['metier']) && isset($_POST['description']) && !empty($_POST['description']) && isset($_POST['mission']) && !empty($_POST['mission']) && isset($_POST['profil']) && !empty($_POST['profil']) && isset($_POST['categorie']) && !empty($_POST['categorie'])){
+  $metier=$_POST['metier'];
+  $descrip=$_POST['description'];
+  $mission=$_POST['mission'];
+  $profil=$_POST['profil'];
+  $cate=$_POST['categorie'];
     
   $sqlQuery = "INSERT INTO job(`Titre`,`Description`,`Missions`,`Profil`,`Categorie`) VALUES (:Titre,:Descrip,:Mission,:Profil,:Cate)";
   $insertJob = $mysqlClient->prepare($sqlQuery);
@@ -23,6 +23,7 @@ $sqlQuery='SELECT * FROM  job';
 $selectjob=$mysqlClient->prepare($sqlQuery);
 $selectjob->execute();
 $Jobs=$selectjob->fetchAll();
+
 ?>
 
 
@@ -55,7 +56,7 @@ $Jobs=$selectjob->fetchAll();
         
         <div class="container">
             <h1>Ajout un métier</h1>
-            <form action="job.php" method="GET" class="form">
+            <form action="job.php" method="POST" class="form">
 
                 <div>
                     <label>Titre</label>
@@ -127,7 +128,6 @@ $Jobs=$selectjob->fetchAll();
         </div>
    </section>
    
-
 <body>
     <footer class="site-footer">
     <div class="container footer-inner">
