@@ -12,6 +12,30 @@ if (isset($_GET['delete_id_user']))
     ]);
 }
 
+if (isset($_GET['AjoutPrenom']) && empty($_GET['AjoutPrenom'])=== false)
+  if (isset($_GET['AjoutNom']) && empty($_GET['AjoutNom'])=== false)
+    if (isset($_GET['AjoutMail']) && empty($_GET['AjoutMail'])=== false)
+      if (isset($_GET['AjoutRole']) && empty($_GET['AjoutRole'])=== false)
+        if (isset($_GET['AjoutMdp']) && empty($_GET['AjoutMdp'])=== false)
+      {
+        $Prenom = $_GET['AjoutPrenom'];
+        $Nom = $_GET['AjoutNom'];
+        $Mail = $_GET['AjoutMail'];
+        $Role = $_GET['AjoutRole'];
+        $Mdp = $_GET['AjoutMdp'];
+
+        // Faire l'insertion
+
+      $insertCl = $mysqlClient-> prepare('INSERT INTO utilisateurs (Prenom,Nom,Mail,Role,Password) VALUES (:prenom,:nom,:mail,:role,:motdepasse)');
+      $insertCl->execute([
+        'prenom' => $Prenom,
+        'nom' => $Nom,
+        'mail' => $Mail,
+        'role' => $Role,
+        'motdepasse' => $Mdp
+        
+      ]);
+}
 
 
 
@@ -58,31 +82,33 @@ $utilisateurs=$selectuser->fetchAll();
     <!-- Filtres -->
     <form class="search-inline form" method="get">
       <div>
-        <label for="search">Rechercher</label>
-        <input type="text" id="search" name="search" placeholder="Nom ou email">
-      </div>
 
-      <div>
-        <label for="role">Rôle</label>
-        <select id="role" name="role">
-          <option value="">Tous</option>
-          <option value="user">Utilisateur</option>
-          <option value="admin">Administrateur</option>
-        </select>
-      </div>
+      <label for="Prenom">Prénom </label>
+      <input type="text" name="AjoutPrenom">
 
-      <div>
-        <label for="status">Statut</label>
-        <select id="status" name="status">
-          <option value="">Tous</option>
-          <option value="actif">Publiée</option>
-          <option value="suspendu">Suspendu</option>
+      <label for="Nom">Nom </label>
+      <input type="text" name="AjoutNom">
+
+      <label for="Mail">Email </label>
+      <input type="text" name="AjoutMail">
+
+      <label for="Mdp">Password </label>
+      <input type="password" name="AjoutMdp">
+
+
+
+        <label for="Role">Rôle</label>
+        <select name="AjoutRole">
+        <?php
+        for($i = 0; $i< count($utilisateurs); $i++) {
+          echo '<option value= "'.$utilisateurs[$i]['Id'].'">'.$utilisateurs[$i]['Role'].'</option>';
+        }
+        ?>
         </select>
       </div>
 
       <div class="actions">
-        <button class="btn">Filtrer</button>
-        <button type="reset" class="btn">Réinitialiser</button>
+        <input  type="submit" value="Ajouter">
       </div>
     </form>
   </div>
@@ -112,10 +138,9 @@ $utilisateurs=$selectuser->fetchAll();
    <td><?php echo $utilisateurs[$i]['Mail']?></td>
    <td><?php echo $utilisateurs[$i]['Role']?></td>
    <td><?php echo $utilisateurs[$i]['']?></td>
-
-   <td><button type="submit">Éditer</button> 
+   
    <form action="user.php" method="GET">
-    <input type="hidden" value="<?php echo $utilisateurs[$i]['Id']?>" name="delete_id_user">
+   <input type="hidden" value="<?php echo $utilisateurs[$i]['Id']?>" name="delete_id_user">
    <button type="submit">Supprimer</button>
 </form>
   </td>
