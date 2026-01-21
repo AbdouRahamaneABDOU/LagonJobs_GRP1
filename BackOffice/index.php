@@ -2,6 +2,23 @@
 
 require_once(__DIR__ . '/bdd.php');
 
+//modification de l'offre
+/*
+if (isset($_POST['Edit_Id']) && isset($_POST['Edit_Id_Titre']) && isset($_POST['Edit_Id_Ville']) && isset($_POST['Edit_Id_Statut']) && isset($_POST['Mod_Description']) && isset($_POST['Mod_Categorie'])) {
+  $Id_offre_edit=$_POST['Edit_Id'];
+  $T_offre_edit=$_POST['Edit_Id_Titre'];
+  $V_offre_edit=$_POST['Edit_Id_Ville'];
+  $S_offre_edit=$_POST['Edit_Id_Statut'];
+  $sqlQuery = "UPDATE offres SET Id_Titre=:offre_titre,Statut=:offre_statut,Ville=:offre_ville  WHERE Id=:id";
+  $editOffre = $mysqlClient->prepare($sqlQuery);
+  $editOffre->execute([
+    'id' => $Id_offre_edit,
+    'offre_titre' => $T_offre_edit,
+    'offre_statut' => $S_offre_edit,
+    'offre_ville' => $V_offre_edit
+  ]);
+ 
+}*/
 
 $sqlQuery = 
 'SELECT of.Id, 
@@ -60,7 +77,7 @@ $Jobs=$selectjob->fetchAll();
 
                 <div class="container">
             
-                    <form action="offres.html" method="get" class="search-inline">
+                    <form action="offres.html" method="POST" class="search-inline">
                         <label for="ajout">+Ajouter</label>
                         <input type="text" name="ajout">
 
@@ -88,7 +105,7 @@ $Jobs=$selectjob->fetchAll();
                     
                     <tr>
                         <th>Titre</th>
-                        <th>Status</th>
+                        <th>Statut</th>
                         <th>Catégorie</th>
                         <th>Description</th>
                         <th>Actions</th>
@@ -106,8 +123,8 @@ $Jobs=$selectjob->fetchAll();
                                 <form action="offre_edit.php" method="POST">
                                     <button type="submit">Éditer</button >
                                 </form>
-                                <form action="eleve.php" method="POST">
-                                    <button type="submit">Supprimer</button >
+                                <form action="index.php" method="POST">
+                                    <button type="submit">Supprimer</button>
                                 </form>
                             </td>
                            
