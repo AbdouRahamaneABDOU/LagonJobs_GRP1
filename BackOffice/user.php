@@ -6,44 +6,55 @@ if (isset($_GET['delete_id_user']))
 {
   $id_user = $_GET['delete_id_user'];
 
-  $insertCl = $mysqlClient-> prepare('DELETE FROM utilisateurs WHERE id = :id_utilisateurs');
+  $insertCl = $mysqlClient-> prepare('DELETE FROM utilisateurs WHERE id = :id_user');
   $insertCl->execute([
-      'id_utilisateurs' => $id_user
+      'id_user' => $id_user
     ]);
 }
 
 if (isset($_GET['AjoutPrenom']) && empty($_GET['AjoutPrenom'])=== false)
   if (isset($_GET['AjoutNom']) && empty($_GET['AjoutNom'])=== false)
     if (isset($_GET['AjoutMail']) && empty($_GET['AjoutMail'])=== false)
-      if (isset($_GET['AjoutRole']) && empty($_GET['AjoutRole'])=== false)
         if (isset($_GET['AjoutMdp']) && empty($_GET['AjoutMdp'])=== false)
+          if (isset($_GET['AjoutRole']) && empty($_GET['AjoutRole'])=== false)
       {
         $Prenom = $_GET['AjoutPrenom'];
         $Nom = $_GET['AjoutNom'];
         $Mail = $_GET['AjoutMail'];
-        $Role = $_GET['AjoutRole'];
         $Mdp = $_GET['AjoutMdp'];
+        $IDrole = $_GET['AjoutRole'];
 
         // Faire l'insertion
 
-      $insertCl = $mysqlClient-> prepare('INSERT INTO utilisateurs (Prenom,Nom,Mail,Role,Password) VALUES (:prenom,:nom,:mail,:role,:motdepasse)');
+      $insertCl = $mysqlClient-> prepare('INSERT INTO utilisateurs (Prenom,Nom,Mail,Password,Id_Role) VALUES (:prenom,:nom,:mail,:motdepasse,:id_role)');
       $insertCl->execute([
         'prenom' => $Prenom,
         'nom' => $Nom,
         'mail' => $Mail,
-        'role' => $Role,
-        'motdepasse' => $Mdp
+        'motdepasse' => $Mdp,
+        'id_role' => $IDrole
         
       ]);
 }
 
+$sqlQuery = 
+'SELECT utilisateurs.Id,
+utilisateurs.Nom, 
+utilisateurs.Prenom, 
+utilisateurs.Mail,
+utilisateurs.Password,
+Role.NomRole
+FROM utilisateurs
+JOIN Role on Role.Id = utilisateurs.Id_Role;';
+$Selectuser=$mysqlClient->prepare($sqlQuery);
+$Selectuser->execute();
+$User=$Selectuser->fetchAll();
 
+$sqlQuery='SELECT * FROM  Role';
+$selectrole=$mysqlClient->prepare($sqlQuery);
+$selectrole->execute();
+$Role=$selectrole->fetchAll();
 
-
-$sqlQuery='SELECT * FROM  utilisateurs';
-$selectuser=$mysqlClient->prepare($sqlQuery);
-$selectuser->execute();
-$utilisateurs=$selectuser->fetchAll();
 
 ?>
 
@@ -81,29 +92,38 @@ $utilisateurs=$selectuser->fetchAll();
 
     <!-- Filtres -->
     <form class="search-inline form" method="get">
-      <div>
+      <div class="row"> 
+        <div>
+            <label for="Prenom">Prénom </label>
+            <input type="text" name="AjoutPrenom">
+        </div>
+        <div>
+            <label for="Nom">Nom </label>
+            <input type="text" name="AjoutNom">
+        </div>
+      </div>
+      <div class="row">
+        <div>
+          <label for="Mail">Email </label>
+          <input type="text" name="AjoutMail">
+        </div>
+        <div>
+          <label for="Mdp">Password </label>
+          <input type="password" name="AjoutMdp">
+        </div>
+      </div>
 
-      <label for="Prenom">Prénom </label>
-      <input type="text" name="AjoutPrenom">
 
-      <label for="Nom">Nom </label>
-      <input type="text" name="AjoutNom">
-
-      <label for="Mail">Email </label>
-      <input type="text" name="AjoutMail">
-
-      <label for="Mdp">Password </label>
-      <input type="password" name="AjoutMdp">
-
-
-
-        <label for="Role">Rôle</label>
-        <select name="AjoutRole">
-        <?php
-        for($i = 0; $i< count($utilisateurs); $i++) {
-          echo '<option value= "'.$utilisateurs[$i]['Id'].'">'.$utilisateurs[$i]['Role'].'</option>';
-        }
-        ?>
+      <div class="row">
+        <div>
+            <label for="Role">Rôle</label>
+            <select name="AjoutRole">
+            <?php
+            for($i = 0; $i< count($Role); $i++) {
+              echo '<option value= "'.$Role[$i]['Id'].'">'.$Role[$i]['NomRole'].'</option>';
+            }
+            ?>
+        </div>
         </select>
       </div>
 
@@ -126,24 +146,21 @@ $utilisateurs=$selectuser->fetchAll();
             <th align="left">Nom</th>
             <th align="left">Email</th>
             <th align="left">Rôle</th>
-            <th align="left">Statut</th>
             <th align="left">Actions</th>
           </tr>
         </thead>
 
         <?php
-        for($i = 0; $i< count($utilisateurs); $i++) { ?>
+        for($i = 0; $i< count($User); $i++) { ?>
   <tr>
-   <td><?php echo $utilisateurs[$i]['Nom'].' '.$utilisateurs[$i]['Prenom']?></td>
-   <td><?php echo $utilisateurs[$i]['Mail']?></td>
-   <td><?php echo $utilisateurs[$i]['Role']?></td>
-   <td><?php echo $utilisateurs[$i]['']?></td>
+   <td><?php echo $User[$i]['Nom'].' '.$User[$i]['Prenom']?></td>
+   <td><?php echo $User[$i]['Mail']?></td>
+   <td><?php echo $User[$i]['NomRole']?></td>
    
    <form action="user.php" method="GET">
-   <input type="hidden" value="<?php echo $utilisateurs[$i]['Id']?>" name="delete_id_user">
-   <button type="submit">Supprimer</button>
+   <input type="hidden" value="<?php echo $User[$i]['Id']?>" name="delete_id_user">
+   <td><button type="submit">Supprimer</button></td>
 </form>
-  </td>
   </tr>
 <?php } ?>
         

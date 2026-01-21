@@ -10,7 +10,7 @@ if (isset($_POST['ajouter']) && !empty($_POST['Titre']) && !empty($_POST['ville'
     $tr=$_POST['Titre'];
     $cat=$_POST['Categorie'];
     $ins=$mysqlClient->prepare('INSERT INTO `job`( Titre, Description, Categorie) VALUES (:Titre, :Description, :Categorie)');
-    $ins->execute ([ 'Titre'=> $tr, 'Description'=>$des, 'Categorie'=>$cat]); 
+    $ins->execute ([ 'Titre'=> $tr, 'Description'=>$des, 'Categorie'=>$cat]);
 
 
     $vil=$_POST['ville'];
