@@ -1,3 +1,34 @@
+<?php
+require_once(__DIR__ . '/bdd.php');
+
+if (isset($_POST['metier']) && !empty($_POST['metier'])
+&& isset($_POST['desciption']) && !empty($_POST['desciption'])
+&& isset($_POST['mission']) && !empty($_POST['mission'])
+&& isset($_POST['profil']) && !empty($_POST['profil'])){
+  $metier=$_POST['metier'];
+  $descrip=$_POST['description'];
+  $mission=$_POST['mission'];
+  $profil=$_POST['profil'];
+  $sqlQuery = 'INSERT INTO job(`Titre`,`Description`,`Titre`,`Titre`) VALUES (:Nom_Classe)';
+
+
+  $insertJob = $mysqlClient->prepare($sqlQuery);
+  $insertJob->execute([
+    'Titre'=>$metier,
+    'Descrip'=>$descrip,
+    'Mission'=>$mission,
+    'Profil'=>$profil,
+    'Cate'=>$cate
+  ]);
+}
+
+$sqlQuery='SELECT * FROM  job';
+$selectjob=$mysqlClient->prepare($sqlQuery);
+$selectjob->execute();
+$Jobs=$selectjob->fetchAll();
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,7 +62,7 @@
 
                 <div>
                     <label>Titre</label>
-                    <input type="text" name="Sujet" required>
+                    <input type="text" name="metier" required>
                     
                     <label>description</label>
                     <textarea name="description" required></textarea>
@@ -41,11 +72,61 @@
 
                     <label>Profil</label>
                     <textarea name="profil" required></textarea>
-                    
+
+                    <label>Catégorie</label>
+                    <input type="text" name="categorie" required>
+
                     <button type="submit" class="btn">Ajouter</button>
                     
                 </div>
             </form>
+
+        </div>
+
+        <div class="container card">
+            <h2>Liste des métiers</h2>
+            <table >
+                <tr>
+                    <th>Métier</th>
+                    <th>Description</th>
+                    <th>Missions</th>
+                    <th>Profil</th>
+                    <th>Catégorie</th>
+                    <th>Actions</th>
+                </tr>
+                <?php
+
+                for ($i=0;$i<count($Jobs);$i++) {
+                ?>  
+                    <tr>
+                        <td>
+                            <?php echo ($i+1); ?>
+                        </td>
+                        <td>
+                            <?php echo $Jobs[$i]['Titre']; ?>
+                        </td>
+                        <td>
+                            <?php echo $Jobs[$i]['Description']; ?>
+                        </td>
+                        <td>
+                             <?php echo $Jobs[$i]['Missions']; ?>
+                        </td>
+                        <td>
+                             <?php echo $Jobs[$i]['Profil']; ?>
+                        </td>
+                        <td>
+                             <?php echo $Jobs[$i]['Categorie']; ?>
+                        </td>
+                         <td>
+                            <button type="submit">Éditer</button >
+                            <button type="submit">Supprimer</button >
+                        </td>
+                       
+                    </tr>
+                <?php
+                }
+                ?>
+            </table>
         </div>
    </section>
    

@@ -2,22 +2,29 @@
 require_once(__DIR__ . '/bdd.php');
 
 
-SELECT `job.Id, job.Titre, job.Description, job.Missions, job.Profil, job.Categorie, offres.Id_Titre, offres.Categorie, offres.Ville, offres.Statut` FROM `job` JOIN `offres` on `offres.Id_Titre = job.Id`;    
 
 
+if (isset($_POST['ajouter']) && !empty($_POST['Titre']) && !empty($_POST['ville']) && !empty($_POST['Description']) && !empty($_POST['statut']) && !empty($_POST['Categorie']))
+{
+    $des=$_POST['Description'];
+    $tr=$_POST['Titre'];
+    $cat=$_POST['Categorie'];
+    $ins=$mysqlClient->prepare('INSERT INTO `job`( Titre, Description, Categorie) VALUES (:Titre, :Description, :Categorie)');
+    $ins->execute ([ 'Titre'=> $tr, 'Description'=>$des, 'Categorie'=>$cat]); 
 
 
+    $vil=$_POST['ville'];
+    $stat=$_POST['statut'];
+    $ins=$mysqlClient->prepare('INSERT INTO `offres`( Ville, Statut) VALUES (:Ville, :Statut)');
+    $ins->execute ([ 'Ville'=> $vil, 'Statut'=>$stat]); 
 
-
-
-
-
-// INSERT INTO `job`(`Titre, Description, Missions, Profil, Categorie`) VALUES (' , , , , ');
+}
 
 ?>
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,6 +36,7 @@ SELECT `job.Id, job.Titre, job.Description, job.Missions, job.Profil, job.Catego
         <div class="container header-inner">
             <a href="index.html" class="logo">
                 <span class="wave"></span>Lagon<span>Jobs</span>
+        </a>
             <nav class="nav">
                 <a href="index.php">Tableau de bord</a>
                 <a href="user.php">Utilisateurs</a>
@@ -43,66 +51,59 @@ SELECT `job.Id, job.Titre, job.Description, job.Missions, job.Profil, job.Catego
     <section class="hero">
 
     <div class="container">
-        <form action="" method="GET" class="form">
+        <form action="" method="POST" class="form">
 
             <div>
                 <div class="row">
                     <label>
-                    Titre
-                    <input type="text" name="Sujet" required>
+                        Titre
+                            <input type="text" placeholder="Titre (ex : Développeur Web)" name="Titre" required>
                     </label>
+
 
                     <label>
                         Ville
-                            <input type="text" name="type_contrat" required>
+                            <input type="text" placeholder="Ville (ex : Mamoudzou)" name="ville" required>
                     </label>
                 </div>
 
                 <label>
-                    description
-                    <textarea name="description" required></textarea>
+                Description
+                    <textarea name="Description" placeholder="Description (ex : Développement et maintenance de site web)" required></textarea>
                 </label>
             </div>
 
             <div class="row">
                 <label>
                 Statut
-                    <select name="type_contrat" required>
-                        <option value="CDI">publie</option>
-                        <option value="Stage">dd</option>
-                    </select>
+                    <input type="text" placeholder="statut (ex : CDI)" name="statut" required>
                 </label>
 
                 <label>
                 Catégorie
-                    <select name="type_contrat" required>
-                        <option value="CDI">catégorie</option>
-                        <option value="CDD">CDD</option>
-                        <option value="Stage">Stage</option>
-                        <option value="Freelance">Freelance</option>
-                    </select>
+                    <input type="text" placeholder="Categorie (ex : informatique)" name="Categorie" required>
                 </label>
             </div>
             
 
             <div class="actions">
-            <button type="submit" class="btn">Annuler</button>
-            <button type="reset" class="btn">Enregistrer</button>
+                <button type="submit" name="ajouter" class="btn">Enregistrer</button>
+                <button type="reset" name="effacer" class="btn">effacer</button>
             </div>
 
         </form>
+
+                
     </div>
    </section>
    
-
-<body>
-    <footer class="site-footer">
+<footer class="site-footer">
     <div class="container footer-inner">
         <p>© 2025 LagonJobs — Tous droits réservés</p>
         <b> Confidentialité  <a href="contact.html">Nous contacter</a> </b>
     </div>
 </footer>
-
+</body>
 </html>
 
 

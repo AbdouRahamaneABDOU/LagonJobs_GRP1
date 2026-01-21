@@ -1,3 +1,30 @@
+<?php
+require_once(__DIR__ . '/bdd.php');
+
+// Faire la suppression
+if (isset($_GET['delete_id_user']))
+{
+  $id_user = $_GET['delete_id_user'];
+
+  $insertCl = $mysqlClient-> prepare('DELETE FROM utilisateurs WHERE id = :id_utilisateurs');
+  $insertCl->execute([
+      'id_utilisateurs' => $id_user
+    ]);
+}
+
+
+
+
+
+$sqlQuery='SELECT * FROM  utilisateurs';
+$selectuser=$mysqlClient->prepare($sqlQuery);
+$selectuser->execute();
+$utilisateurs=$selectuser->fetchAll();
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -78,40 +105,26 @@
           </tr>
         </thead>
 
-        <tbody>
-          <tr>
-            <td>Azaly </td>
-            <td>azalymahaviteny@email.com</td>
-            <td><span class="badge">Utilisateur</span></td>
-            <td><span class="badge">Publiée</span></td>
-            <td>
-              <a href="" class="">Modifier</a>
-              <a href="" class="">Suspendre</a>
-            </td>
-          </tr>
+        <?php
+        for($i = 0; $i< count($utilisateurs); $i++) { ?>
+  <tr>
+   <td><?php echo $utilisateurs[$i]['Nom'].' '.$utilisateurs[$i]['Prenom']?></td>
+   <td><?php echo $utilisateurs[$i]['Mail']?></td>
+   <td><?php echo $utilisateurs[$i]['Role']?></td>
+   <td><?php echo $utilisateurs[$i]['']?></td>
 
-          <tr>
-            <td>Abdou R.</td>
-            <td>Abdou-rahamane@outlook.com</td>
-            <td><span class="badge">Utilisateur</span></td>
-            <td><span class="badge">Publiée</span></td>
-            <td>
-              <a href="" class="">Modifier</a>
-              <a href="" class="">Suspendre</a>
-            </td>
-          </tr>
-
-          <tr>
-            <td>Djanfar</td>
-            <td>djanfar@bana.fr</td>
-            <td><span class="badge">Administrateur</span></td>
-            <td><span class="badge">Publiée</span></td>
-            <td>
-              <a href="" class="">Modifier</a>
-              <a href="" class="">Suspendre</a>
-            </td>
-          </tr>
-        </tbody>
+   <td><button type="submit">Éditer</button> 
+   <form action="user.php" method="GET">
+    <input type="hidden" value="<?php echo $utilisateurs[$i]['Id']?>" name="delete_id_user">
+   <button type="submit">Supprimer</button>
+</form>
+  </td>
+  </tr>
+<?php } ?>
+        
+        
+        
+      
       </table>
 
     </div>
