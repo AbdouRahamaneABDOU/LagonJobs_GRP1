@@ -1,3 +1,21 @@
+<?php
+require_once(__DIR__ . '/bdd.php');
+
+
+SELECT `job.Id, job.Titre, job.Description, job.Missions, job.Profil, job.Categorie, offres.Id_Titre, offres.Categorie, offres.Ville, offres.Statut` FROM `job` JOIN `offres` on `offres.Id_Titre = job.Id`;    
+
+
+
+
+
+
+
+
+
+// INSERT INTO `job`(`Titre, Description, Missions, Profil, Categorie`) VALUES (' , , , , ');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,12 +54,7 @@
 
                     <label>
                         Ville
-                            <select name="type_contrat" required>
-                                <option value="CDI">Mamoudzou</option>
-                                <option value="CDD">CDD</option>
-                                <option value="Stage">Stage</option>
-                                <option value="Freelance">Freelance</option>
-                            </select>
+                            <input type="text" name="type_contrat" required>
                     </label>
                 </div>
 
@@ -56,9 +69,7 @@
                 Statut
                     <select name="type_contrat" required>
                         <option value="CDI">publie</option>
-                        <option value="CDD">CDD</option>
-                        <option value="Stage">Stage</option>
-                        <option value="Freelance">Freelance</option>
+                        <option value="Stage">dd</option>
                     </select>
                 </label>
 
