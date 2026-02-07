@@ -20,7 +20,7 @@ if(isset($_POST['metier']) && !empty($_POST['metier']) && isset($_POST['descript
 
 }
 
-$sqlQuery='SELECT * FROM  job';
+$sqlQuery='SELECT * FROM  offres';
 $selectjob=$mysqlClient->prepare($sqlQuery);
 $selectjob->execute();
 $Jobs=$selectjob->fetchAll();
