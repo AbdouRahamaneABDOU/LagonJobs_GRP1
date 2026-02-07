@@ -7,7 +7,7 @@ $contratsStatement = $mysqlClient->prepare($sqlQuery);
 $contratsStatement->execute();
 $contrats = $contratsStatement->fetchAll();
 
-$sqlQuery = 'SELECT * FROM job';
+$sqlQuery = 'SELECT * FROM offres';
 $mdtrvlStatement = $mysqlClient->prepare($sqlQuery);
 $mdtrvlStatement->execute();
 $job = $mdtrvlStatement->fetchAll();

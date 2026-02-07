@@ -4,12 +4,15 @@ require_once(__DIR__ . '/bdd.php');
 
 
 
-if (isset($_POST['ajouter']) && !empty($_POST['Titre']) && !empty($_POST['ville']) && !empty($_POST['Description']) && !empty($_POST['statut']) && !empty($_POST['Categorie']))
+if (isset($_POST['ajouter']) && !empty($_POST['Titre']) 
+    && !empty($_POST['ville']) && !empty($_POST['Description']) 
+    && !empty($_POST['statut']) && !empty($_POST['Categorie']))
 {
     $des=$_POST['Description'];
     $tr=$_POST['Titre'];
     $cat=$_POST['Categorie'];
-    $ins=$mysqlClient->prepare('INSERT INTO `job`( Titre, Description, Categorie) VALUES (:Titre, :Description, :Categorie)');
+    $ins=$mysqlClient->prepare('INSERT INTO `job`( Titre, Description, Categorie)
+     VALUES (:Titre, :Description, :Categorie)');
     $ins->execute ([ 'Titre'=> $tr, 'Description'=>$des, 'Categorie'=>$cat]); 
 
 
@@ -88,7 +91,6 @@ if (isset($_POST['ajouter']) && !empty($_POST['Titre']) && !empty($_POST['ville'
 
             <div class="actions">
                 <button type="submit" name="ajouter" class="btn">Enregistrer</button>
-                <button type="reset" name="effacer" class="btn">effacer</button>
             </div>
 
         </form>
