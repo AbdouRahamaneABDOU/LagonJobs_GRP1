@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__ . '/bdd.php');
 
+/*
 if(isset($_POST['metier']) && !empty($_POST['metier']) && isset($_POST['description']) && !empty($_POST['description']) && isset($_POST['mission']) && !empty($_POST['mission']) && isset($_POST['profil']) && !empty($_POST['profil']) && isset($_POST['categorie']) && !empty($_POST['categorie'])){
   $metier=$_POST['metier'];
   $descrip=$_POST['description'];
@@ -17,12 +18,24 @@ if(isset($_POST['metier']) && !empty($_POST['metier']) && isset($_POST['descript
     'Profil'=>$profil,
     'Cate'=>$cate
   ]);
-}
+}*/
 
-$sqlQuery='SELECT * FROM  job';
-$selectjob=$mysqlClient->prepare($sqlQuery);
-$selectjob->execute();
-$Jobs=$selectjob->fetchAll();
+$sqlQuery = 
+'SELECT of.Id,
+of.Titre,
+of.Description,
+of.Missions,
+of.Profil,
+ca.NomCategorie,
+vi.NomVille,
+st.NomStatut
+FROM offres of 
+JOIN Categorie ca on ca.Id = of.Id_categorie
+JOIN Ville vi on vi.Id = of.Id_ville
+JOIN Statut st on st.Id = of.Id_statut;';
+$SelectOffres=$mysqlClient->prepare($sqlQuery);
+$SelectOffres->execute();
+$Offres=$SelectOffres->fetchAll();
 
 ?>
 
@@ -45,7 +58,6 @@ $Jobs=$selectjob->fetchAll();
                 <a href="user.php">Utilisateurs</a>
                 <a href="offre.php">Offres</a>
                 <a href="contacts.php">Contact</a>
-                
             </nav>
         </div>
     </header>
@@ -70,34 +82,27 @@ $Jobs=$selectjob->fetchAll();
                     <label>Profil</label>
                     <textarea name="profil" required></textarea>
 
-                    <label>Catégorie</label>
-                    <input type="text" name="categorie" required>
+                    <label for="listbox">Ville</label>
+                    <select name="ville" >
+                        <option value="1">Dakar</option>
+                        <option value="2">Thies</option>
+                        <option value="3">Saint-Louis</option>
+                    </select>
 
+                    <label for="listbox" name="categorie">Catégorie</label>
+                    <select name="categorie" >
+                        <option value="1">Informatique</option>
+                        <option value="2">Marketing</option>
+                        <option value="3">Finance</option>
+                    </select>
+
+                    <label for="listbox" name="statut">Statut</label>
+                    <select name="statut" >
+                        <option value="1">Publiée</option>
+                        <option value="2">Brouillon</option>
+                    </select>
+                    
                     <button type="submit" class="btn">Ajouter</button>
-
-                    <label>
-                        Ville
-                            <input type="text" placeholder="Ville (ex : Mamoudzou)" name="ville" required>
-                    </label>
-                </div>
-
-                <label>
-                Description
-                    <textarea name="Description" placeholder="Description (ex : Développement et maintenance de site web)" required></textarea>
-                </label>
-            </div>
-
-            <div class="row">
-                <label>
-                Statut
-                    <input type="text" placeholder="statut (ex : CDI)" name="statut" required>
-                </label>
-
-                <label>
-                Catégorie
-                    <input type="text" placeholder="Categorie (ex : informatique)" name="Categorie" required>
-                </label>
-            </div>
                     
                 </div>
             </form>
@@ -108,14 +113,16 @@ $Jobs=$selectjob->fetchAll();
             <h2>Liste des métiers</h2>
             <table >
                 <tr>
-                    <th>Métier</th>
+                    <th>Titre</th>
                     <th>Description</th>
                     <th>Missions</th>
                     <th>Profil</th>
                     <th>Catégorie</th>
+                    <th>Ville</th>
+                    <th>Statut</th>
                     <th>Actions</th>
                 </tr>
-                <?php
+                <?php /*
 
                 for ($i=0;$i<count($Jobs);$i++) {
                 ?>  
@@ -146,7 +153,7 @@ $Jobs=$selectjob->fetchAll();
                     </tr>
                 <?php
                 }
-                ?>
+                */?>
             </table>
         </div>
    </section>
