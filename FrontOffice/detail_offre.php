@@ -1,5 +1,24 @@
 <?php
 require_once(__DIR__ . '/bdd.php');
+
+
+$sqlQuery = 
+'SELECT of.Id,  
+of.Ville,   
+of.Statut,
+jb.Titre,
+jb.Description,
+jb.Categorie
+FROM offres of
+JOIN job jb on jb.Id = of.Id_job;';
+$SelectOffres=$mysqlClient->prepare($sqlQuery);
+$SelectOffres->execute();
+$Offres=$SelectOffres->fetch();  
+
+$sqlQuery='SELECT * FROM  job';
+$selectjob=$mysqlClient->prepare($sqlQuery);    
+$selectjob->execute();
+$Jobs=$selectjob->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -31,13 +50,13 @@ require_once(__DIR__ . '/bdd.php');
 </br>   
 </br>
             <div >
-                <p class="badge btn">CDI</p>
-                <h1>Admin Systèmes Junior</h1>
+                <p class="badge btn">Stage</p>
+                <h1> Stagiaire Développeur Web</h1>
             
-                <p>Koungou - Télétravail</p>
+                <p>Mamoudzou - Hybride - 3 à 6 mois </p>
             
-                <p><b>Missions</b> : Gérer les comptes utilisateurs (création, suppression, droits d’accès)</p>
-                <p><b>Profil </b>: Motivé et sérieux, Diplômé d'un BTS SIO (SISR); Windows / Linux, bienvenues</p>
+                <p><b>Missions</b> : Intégrer des maquettes, corriger les bugs, participer aux revues de codes (niveau débutant)</p>
+                <p><b>Profil </b>: motivation, bases HTML/CSS/JS, notions PHP bienvenues</p>
                 <a href="postuler.php" class="btn btn-outline">Postuler</a>
                 <a href="offres.php" class="btn btn-outline">Autres offres</a>  
             </div>  

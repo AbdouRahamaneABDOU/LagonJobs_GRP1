@@ -1,6 +1,24 @@
 <?php
 require_once(__DIR__ . '/bdd.php');
 
+$sqlQuery = 
+'SELECT of.Id, 
+of.Ville, 
+of.Statut,
+jb.Titre,
+jb.Description,
+jb.Categorie
+FROM offres of 
+JOIN job jb on jb.Id = of.Id_job;';
+$SelectOffres=$mysqlClient->prepare($sqlQuery);
+$SelectOffres->execute();
+$Offres=$SelectOffres->fetchAll();
+
+$sqlQuery='SELECT * FROM  job';
+$selectjob=$mysqlClient->prepare($sqlQuery);    
+$selectjob->execute();
+$Jobs=$selectjob->fetchAll();
+
 ?>
 
 <!DOCTYPE html>
@@ -45,9 +63,9 @@ require_once(__DIR__ . '/bdd.php');
 
                     <label for="listbox" name="ville">
                     <select name="ville">
-                        <option value="0">Ville</option>
-                        <option value="1">Mamoudzou</option>
-                        <option value="2">Cavani</option>
+                        <?php foreach($Offres as $offre){ ?>
+                            <option value="<?= $offre['Ville'] ?>"><?= $offre['Ville'] ?></option>
+                        <?php } ?>
                     </select>
 
                     <label for="listbox" name="teletravail">
@@ -66,38 +84,21 @@ require_once(__DIR__ . '/bdd.php');
             <br>
             <div class="container">
                 <div class="cards">
-                    <article class="card">
-                        <p class="badge">Stage</p>
-                        <h3> Stagiaire Développeur Web</h2>
-                    
-                        <p>Mamoudzou - Hybride</p>
-                    
-                        <p>Participer au développement des sites vitrine et e-commerce.</p>
-                        
-                        <a href="detail_offre1.php" class="btn btn-outline">Détail</a>
-                        
-                    </article>  
+                    <?php foreach($Offres as $offre){ ?>
+                        <article class="card">
+                            <p class="badge"><?php echo $offre['Categorie'] ?></p>
+                            <h3> <?php echo $offre['Titre'] ?></h2>
 
-                    <article class="card">
-                        <p class="badge">CDD</p>
-                        <h3> Technicien support</h2>
-                    
-                        <p>Dzaoudzi - Sur site</p>
-                    
-                        <p>Assistance utilisateur, résolution d'incidents et maintenance</p>
-                        <a href="detail_offre2.php" class="btn btn-outline">Détail</a>    
-                
-                    </article>
+                            <p><?php echo $offre['Ville'] ?></p>
 
-                    <article class="card">
-                        <P class="badge">CDD</P>
-                        <h3> Admin systèmes junior </h2>
-                    
-                        <p>Koungou - Hybride</p>
-                    
-                        <p>Administration Linux/Windows, sauvegardes et supervision</p>
-                        <a href="detail_offre2.php" class="btn btn-outline">Détail</a>
-                    </article>
+                            <p><?php echo $offre['Description'] ?></p>
+                            <form action="detail_offre.php" method="get">
+                                <input type="hidden" name="id" value="<?php echo $offre['Id'] ?>">
+                                <button type="submit" class="btn btn-outline">Détail</button>
+                            </form>
+                        </article>  
+
+                    <?php } ?>
                 </div>  
             
             </div>
