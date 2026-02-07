@@ -21,23 +21,21 @@ if (isset($_POST['Edit_Id']) && isset($_POST['Edit_Id_Titre']) && isset($_POST['
 }*/
 
 $sqlQuery = 
-'SELECT of.Id, 
-of.Ville, 
-of.Statut,
-jb.Titre,
-jb.Description,
-jb.Categorie
-FROM offres of 
-JOIN job jb on jb.Id = of.Id_job;';
+'SELECT Offres.Id, 
+Ville.NomVille, 
+Statut.NomStatut,
+Offres.Titre,
+Offres.Description,
+Categorie.NomCategorie
+FROM Offres
+JOIN Statut on Statut.Id = Offres.Id_Statut
+JOIN Categorie on Categorie.Id = Offres.Id_Categorie
+JOIN Ville on Ville.Id = Offres.Id_Ville;';
+
 $SelectOffres=$mysqlClient->prepare($sqlQuery);
 $SelectOffres->execute();
 $Offres=$SelectOffres->fetchAll();
 
-
-$sqlQuery='SELECT * FROM  job';
-$selectjob=$mysqlClient->prepare($sqlQuery);
-$selectjob->execute();
-$Jobs=$selectjob->fetchAll();
 
 ?>
 
