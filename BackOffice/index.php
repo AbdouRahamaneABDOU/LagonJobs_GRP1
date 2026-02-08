@@ -3,22 +3,18 @@
 require_once(__DIR__ . '/bdd.php');
 
 //modification de l'offre
-/*
-if (isset($_POST['Edit_Id']) && isset($_POST['Edit_Id_Titre']) && isset($_POST['Edit_Id_Ville']) && isset($_POST['Edit_Id_Statut']) && isset($_POST['Mod_Description']) && isset($_POST['Mod_Categorie'])) {
-  $Id_offre_edit=$_POST['Edit_Id'];
-  $T_offre_edit=$_POST['Edit_Id_Titre'];
-  $V_offre_edit=$_POST['Edit_Id_Ville'];
-  $S_offre_edit=$_POST['Edit_Id_Statut'];
-  $sqlQuery = "UPDATE offres SET Id_Titre=:offre_titre,Statut=:offre_statut,Ville=:offre_ville  WHERE Id=:id";
-  $editOffre = $mysqlClient->prepare($sqlQuery);
-  $editOffre->execute([
-    'id' => $Id_offre_edit,
-    'offre_titre' => $T_offre_edit,
-    'offre_statut' => $S_offre_edit,
-    'offre_ville' => $V_offre_edit
+
+
+//suppression d'une offre 
+if (isset($_POST['supp_offre'])){
+  $Supp_Offre=$_POST['supp_offre'];
+  
+  $sqlQuery = "DELETE FROM `offres` WHERE Id=:id";
+  $suppressionoffre = $mysqlClient->prepare($sqlQuery);
+  $suppressionoffre->execute([
+    'id'=> $Supp_Offre
   ]);
- 
-}*/
+}
 
 $sqlQuery = 
 'SELECT Offres.Id, 
@@ -36,6 +32,15 @@ $SelectOffres=$mysqlClient->prepare($sqlQuery);
 $SelectOffres->execute();
 $Offres=$SelectOffres->fetchAll();
 
+$sqlQuery='SELECT * FROM  statut';
+$selectStatut=$mysqlClient->prepare($sqlQuery);
+$selectStatut->execute();
+$Statut=$selectStatut->fetchAll();
+
+$sqlQuery='SELECT * FROM  categorie';
+$selectCat=$mysqlClient->prepare($sqlQuery);
+$selectCat->execute();
+$Cate=$selectCat->fetchAll();
 
 ?>
 
@@ -72,20 +77,34 @@ $Offres=$SelectOffres->fetchAll();
                 <br>
                 <br>
 
-                <div class="container">
+                <div class="container card">
             
-                    <form action="offres.html" method="POST" class="search-inline">
+                    <form action="index.php" method="POST" class="search-inline">
                         <label for="ajout">+Ajouter</label>
                         <input type="text" name="ajout">
 
                         <label for="listbox" name="status">Statut</label>
-                        <select name="type">
-                            <option value="0">Publiée</option>
+                        <select name="stat">
+                            <?php 
+                            for ($i=0;$i<count($Statut);$i++) {
+                                if(isset($_POST['stat']) && $Statut[$i]['Id']===intval($_POST['stat'])) { 
+                                    echo "<option value=".$Statut[$i]['Id']."selected>".$Statut[$i]['NomStatut']."</option>";
+                                }else{
+                                    echo "<option value=".$Statut[$i]['Id'].">".$Statut[$i]['NomStatut']."</option>";
+                                }
+                            } ?>
                         </select>
 
                         <label for="listbox" name="categorie">Catégorie</label>
-                        <select name="ville">
-                            <option value="0"></option>
+                        <select name="cat">
+                            <?php 
+                            for ($i=0;$i<count($Cate);$i++) {
+                                if(isset($_POST['cat']) && $Cate[$i]['Id']===intval($_POST['cat'])) { 
+                                    echo "<option value=".$Cate[$i]['Id']."selected>".$Cate[$i]['NomCategorie']."</option>";
+                                }else{
+                                    echo "<option value=".$Cate[$i]['Id'].">".$Cate[$i]['NomCategorie']."</option>";
+                                }
+                            } ?>
                         </select>
 
                     
@@ -98,7 +117,7 @@ $Offres=$SelectOffres->fetchAll();
                 <br>
                 <br>
                 
-                <table class="container">
+                <table class="container card">
                     
                     <tr>
                         <th>Titre</th>
@@ -112,16 +131,17 @@ $Offres=$SelectOffres->fetchAll();
                     ?>
                         <tr>
                             <td><?php echo $Offres[$i]['Titre']?></td> 
-                            <td><?php echo $Offres[$i]['Statut']?></td>
-                            <td><?php echo $Offres[$i]['Categorie']?></td>
+                            <td><?php echo $Offres[$i]['NomStatut']?></td>
+                            <td><?php echo $Offres[$i]['NomCategorie']?></td>
                             <td><?php echo $Offres[$i]['Description']?></td>
 
                             <td>
                                 <form action="offre_edit.php" method="POST">
-                                    <button type="submit">Éditer</button >
+                                    <button type="submit" class="btn">Éditer</button >
                                 </form>
                                 <form action="index.php" method="POST">
-                                    <button type="submit">Supprimer</button>
+                                    <input type="hidden" name="supp_offre" value="<?php echo $Offres[$i]['Id']?>">
+                                    <button type="submit" class="btn">Supprimer</button >
                                 </form>
                             </td>
                            

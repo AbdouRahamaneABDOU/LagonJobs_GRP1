@@ -307,11 +307,11 @@ $ModeTravail=$selectMode->fetchAll();
                                 <input type="hidden" name="Contract_of_edit" value="<?php echo $Offres[$i]['TypeContrat']?>">
                                 <input type="hidden" name="Mode_of_edit" value="<?php echo $Offres[$i]['NomModeTravail']?>">
                                 <input type="hidden" name="Statut_of_edit" value="<?php echo $Offres[$i]['NomStatut']?>">
-                                <button type="submit">Éditer</button >
+                                <button type="submit" class="btn">Éditer</button >
                             </form>
                             <form action="offre.php" method="POST">
                                 <input type="hidden" name="supp_offre" value="<?php echo $Offres[$i]['Id']?>">
-                                <button type="submit">Supprimer</button >
+                                <button type="submit" class="btn">Supprimer</button >
                             </form>
                         </td>
                        
