@@ -75,6 +75,17 @@ isset($_POST['mod_ville'])){
   ]);
 }
 
+//suppression d'une offre 
+if (isset($_POST['supp_offre'])){
+  $Supp_Offre=$_POST['supp_offre'];
+  
+  $sqlQuery = "DELETE FROM `offres` WHERE Id=:id";
+  $suppressionoffre = $mysqlClient->prepare($sqlQuery);
+  $suppressionoffre->execute([
+    'id'=> $Supp_Offre
+  ]);
+}
+
 //Jointure  
 $sqlQuery = 
 'SELECT of.Id,
@@ -298,7 +309,10 @@ $ModeTravail=$selectMode->fetchAll();
                                 <input type="hidden" name="Statut_of_edit" value="<?php echo $Offres[$i]['NomStatut']?>">
                                 <button type="submit">Éditer</button >
                             </form>
-                            <button type="submit">Supprimer</button >
+                            <form action="offre.php" method="POST">
+                                <input type="hidden" name="supp_offre" value="<?php echo $Offres[$i]['Id']?>">
+                                <button type="submit">Supprimer</button >
+                            </form>
                         </td>
                        
                     </tr>
