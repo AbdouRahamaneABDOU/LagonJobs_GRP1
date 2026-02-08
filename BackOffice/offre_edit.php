@@ -69,13 +69,13 @@ $ModeTravail=$selectMode->fetchAll();
                     <input type="text" name="mod_metier" value="<?php echo $_POST['Titre_of_edit']?>">
                     
                     <label>description</label>
-                    <textarea name="mod_description" value="<?php echo $_POST['Desc_of_edit']?>"></textarea>
+                    <textarea name="mod_description" ><?php echo $_POST['Desc_of_edit']?></textarea>
 
                     <label>Missions</label>
-                    <textarea name="mod_mission" value="<?php echo $_POST['Mission_of_edit']?>"></textarea>
+                    <textarea name="mod_mission" ><?php echo $_POST['Mission_of_edit']?></textarea>
 
                     <label>Profil</label>
-                    <textarea name="mod_profil" value="<?php echo $_POST['Profil_of_edit']?>"></textarea>
+                    <textarea name="mod_profil" ><?php echo $_POST['Profil_of_edit']?></textarea>
                     
                     <label for="listbox">Ville</label>
                     <select name="mod_ville" >
