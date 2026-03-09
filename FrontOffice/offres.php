@@ -2,22 +2,24 @@
 require_once(__DIR__ . '/bdd.php');
 
 $sqlQuery = 
-'SELECT of.Id, 
-of.Ville, 
-of.Statut,
-jb.Titre,
-jb.Description,
-jb.Categorie
-FROM offres of 
-JOIN job jb on jb.Id = of.Id_job;';
+'SELECT Offres.Id, 
+Ville.NomVille, 
+Statut.NomStatut,
+Offres.Titre,
+Offres.Description,
+Categorie.NomCategorie
+FROM Offres
+JOIN Ville on Ville.Id = Offres.Id_Ville
+JOIN Statut on Statut.Id = Offres.Id_Statut
+JOIN Categorie on Categorie.Id = Offres.Id_Categorie;';
 $SelectOffres=$mysqlClient->prepare($sqlQuery);
 $SelectOffres->execute();
 $Offres=$SelectOffres->fetchAll();
 
-$sqlQuery='SELECT * FROM  job';
-$selectjob=$mysqlClient->prepare($sqlQuery);    
-$selectjob->execute();
-$Jobs=$selectjob->fetchAll();
+$sqlQuery='SELECT * FROM  Ville';
+$selectcity=$mysqlClient->prepare($sqlQuery);
+$selectcity->execute();
+$City=$selectcity->fetchAll();
 
 ?>
 
@@ -63,9 +65,9 @@ $Jobs=$selectjob->fetchAll();
 
                     <label for="listbox" name="ville">
                     <select name="ville">
-                        <?php foreach($Offres as $offre){ ?>
-                            <option value="<?= $offre['Ville'] ?>"><?= $offre['Ville'] ?></option>
-                        <?php } ?>
+                        <?php for($i = 0; $i< count($City); $i++) {
+                            echo '<option value= "'.$City[$i]['Id'].'">'.$City[$i]['NomVille'].'</option>';
+                            } ?>
                     </select>
 
                     <label for="listbox" name="teletravail">
@@ -84,16 +86,16 @@ $Jobs=$selectjob->fetchAll();
             <br>
             <div class="container">
                 <div class="cards">
-                    <?php foreach($Offres as $offre){ ?>
+                    <?php foreach($Offres as $Offres){ ?>
                         <article class="card">
-                            <p class="badge"><?php echo $offre['Categorie'] ?></p>
-                            <h3> <?php echo $offre['Titre'] ?></h2>
+                            <p class="badge"><?php echo $Offres['Categorie'] ?></p>
+                            <h3> <?php echo $Offres['Titre'] ?></h2>
 
-                            <p><?php echo $offre['Ville'] ?></p>
+                            <p><?php echo $Offres['Ville'] ?></p>
 
-                            <p><?php echo $offre['Description'] ?></p>
+                            <p><?php echo $Offres['Description'] ?></p>
                             <form action="detail_offre.php" method="get">
-                                <input type="hidden" name="id" value="<?php echo $offre['Id'] ?>">
+                                <input type="hidden" name="id" value="<?php echo $Offres['Id'] ?>">
                                 <button type="submit" class="btn btn-outline">Détail</button>
                             </form>
                         </article>  
