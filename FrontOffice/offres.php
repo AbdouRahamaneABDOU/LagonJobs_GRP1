@@ -21,6 +21,15 @@ $selectcity=$mysqlClient->prepare($sqlQuery);
 $selectcity->execute();
 $City=$selectcity->fetchAll();
 
+$sqlQuery='SELECT * FROM  Contrats';
+$selectcontrats=$mysqlClient->prepare($sqlQuery);
+$selectcontrats->execute();
+$Contrats=$selectcontrats->fetchAll();
+
+$sqlQuery='SELECT * FROM  ModeTravail';
+$selectwork=$mysqlClient->prepare($sqlQuery);
+$selectwork->execute();
+$Travail=$selectwork->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -56,24 +65,28 @@ $City=$selectcity->fetchAll();
                 <form action="offres.php" method="get" class="search-inline card">
                     <input type="text" placeholder="Mot-clé">
 
-                    <label for="listbox" name="type">
+                    <label for="listbox">
                     <select name="type">
-                        <option value="0">Type</option>
-                        <option value="1">Stage</option>
-                        <option value="2">CDD</option>
+                        <option selected>TypeContrat</option>
+                        <?php for($i = 0; $i< count($Contrats); $i++) {
+                            echo '<option value= "'.$Contrats[$i]['Id'].'">'.$Contrats[$i]['TypeContrat'].'</option>';
+                            } ?>
                     </select>
 
-                    <label for="listbox" name="ville">
+                    <label for="listbox">
                     <select name="ville">
+                        <option selected>Ville</option>
                         <?php for($i = 0; $i< count($City); $i++) {
                             echo '<option value= "'.$City[$i]['Id'].'">'.$City[$i]['NomVille'].'</option>';
                             } ?>
                     </select>
 
-                    <label for="listbox" name="teletravail">
-                    <select name="">
-                        <option value="1">Télétravail</option>
-                        <option value="2">Bureau</option>
+                    <label for="listbox">
+                    <select name="ModeTravail">
+                        <option selected>ModeTravail</option>
+                        <?php for($i = 0; $i< count($Travail); $i++) {
+                            echo '<option value= "'.$Travail[$i]['Id'].'">'.$Travail[$i]['NomModeTravail'].'</option>';
+                            } ?>
                     </select>
            
                     <button type="submit" class="btn">Filtrer</button>
