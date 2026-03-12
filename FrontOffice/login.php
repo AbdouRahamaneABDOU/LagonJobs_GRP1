@@ -1,13 +1,6 @@
 <?php
 require_once(__DIR__ . '/bdd.php');
 
-if(isset($_GET['envoi'])){
-    if(!empty($_GET['mail']) AND !empty($_GET['mdp'])){
-
-    }else{
-        echo "Veuillez compléter tous les champs... ";
-    }
-}
 ?>
 
 
@@ -37,7 +30,7 @@ if(isset($_GET['envoi'])){
             <div class="stack auth-card">
                 <h1>Connexion</h1>
             
-                <form action="" method="get" class="form ">
+                <form action="loginconnexion.php" method="POST" class="form ">
                     <label for="mail">Email</label>
                     <input type="email" name="mail">
 
