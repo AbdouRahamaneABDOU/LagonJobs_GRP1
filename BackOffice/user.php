@@ -2,6 +2,33 @@
 require_once(__DIR__ . '/bdd.php');
 require_once(__DIR__ . '/update_user.php');
 
+// Bloquer un utilisateur
+if (isset($_GET['bloquer_id_user'])){
+
+  $id_user = $_GET['bloquer_id_user'];
+
+  $req = $mysqlClient->prepare('UPDATE utilisateurs SET Bloque = 1 WHERE Id = :id_user');
+  $req->execute([
+    'id_user' => $id_user
+  ]);
+}
+
+// Débloquer un utilisateur 
+if (isset($_GET['debloquer_id_user'])){
+
+  $id_user = $_GET['debloquer_id_user'];
+
+  $req = $mysqlClient->prepare('UPDATE utilisateurs SET Bloque = 0 WHERE Id = :id_user');
+  $req->execute([
+    'id_user' => $id_user
+  ]);
+}
+
+
+
+
+
+
 // Faire la suppression
 if (isset($_GET['delete_id_user']))
 {
@@ -45,6 +72,7 @@ utilisateurs.Prenom,
 utilisateurs.Mail,
 utilisateurs.Password,
 utilisateurs.Id_Role,
+utilisateurs.Bloque,
 Role.NomRole
 FROM utilisateurs
 JOIN Role on Role.Id = utilisateurs.Id_Role;';
@@ -124,12 +152,16 @@ $Role=$selectrole->fetchAll();
               echo '<option value= "'.$Role[$i]['Id'].'">'.$Role[$i]['NomRole'].'</option>';
             }
             ?>
+            </select>
         </div>
-        </select>
+        <div class="btn-ajouter">
+          <label>&nbsp;</label>
+          <input  type="submit" value="Ajouter">
+        </div>
       </div>
 
-      <div class="actions">
-        <input  type="submit" value="Ajouter">
+      <div class="btn-ajouter">
+        <input type="reset" value="Rénitialiser">
       </div>
     </form>
   </div>
@@ -147,7 +179,8 @@ $Role=$selectrole->fetchAll();
             <th align="left">Nom</th>
             <th align="left">Email</th>
             <th align="left">Rôle</th>
-            <th align="center">Actions</th>
+            <th align="left">Statut</th>
+            <th align="left">Actions</th>
           </tr>
         </thead>
 
@@ -157,6 +190,15 @@ $Role=$selectrole->fetchAll();
    <td><?php echo $User[$i]['Nom'].' '.$User[$i]['Prenom']?></td>
    <td><?php echo $User[$i]['Mail']?></td>
    <td><?php echo $User[$i]['NomRole']?></td>
+
+   <td>
+    <?php if($User[$i]['Bloque'] == 1){
+      echo "Bloqué";
+      } else{
+        echo "Actif";
+        }
+    ?>
+</td>
 
    <td><form action="user.php" method="GET">
       <input type="hidden" value="<?php echo $User[$i]['Id']?>" name="delete_id_user">
@@ -168,9 +210,22 @@ $Role=$selectrole->fetchAll();
       <input type="hidden" value="<?php echo $User[$i]['Nom']?>" name="updated_nom">
       <input type="hidden" value="<?php echo $User[$i]['Mail']?>" name="updated_mail">
       <input type="hidden" value="<?php echo $User[$i]['Id_Role']?>" name="updated_id_role">
-      <button type="submit">Editer</button></td>
+      <button type="submit">Editer</button>
     </form>
-  </tr>
+
+    <?php if($User[$i]['Bloque'] == 0){ ?>
+    <form action="user.php" method="GET">
+      <input type="hidden" value="<?php echo $User[$i]['Id']?>" name="bloquer_id_user">
+      <button type="submit">Bloquer</button>
+    </form>
+    <?php } else { ?>
+    <form action="user.php" method="GET">
+      <input type="hidden" value="<?php echo $User[$i]['Id']?>" name="debloquer_id_user">
+      <button type="submit">Débloquer</button>
+    </form>
+    <?php } ?>
+  </td>
+</tr>
 <?php } ?>
         
         
