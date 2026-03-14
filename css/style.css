@@ -108,6 +108,50 @@ a:hover{color:var(--lagon)}
 .filter-bar{
   display:grid; grid-template-columns: repeat(5, minmax(120px, 1fr)); gap:.6rem;
 }
+
+.popup-fond{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right:0;
+  bottom: 0;
+  z-index: 98;
+  display: none;
+}
+
+.popup-fond.open{
+  display:block !important;
+}
+
+.popup-content{
+  max-width: 300px;
+  padding: 30px;
+  box-sizing: border-box;
+  background: white;
+  position: absolute;
+  top: 0%;
+  left: 80%;
+}
+
+.popup-content label{
+  margin: 20px 0;
+}
+
+.popup-content input, textarea{
+  border-radius: 5px;
+}
+
+.popup-exit{
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-decoration: none;
+  background: #00A8CC;
+  padding: 5px 15px;
+  border-radius: 5px;
+
+}
+
 @media (max-width: 900px){
   .hero .grid{grid-template-columns:1fr}
   .filter-bar{grid-template-columns: repeat(2, 1fr)}
