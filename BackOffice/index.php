@@ -60,7 +60,7 @@ $Cate=$selectCat->fetchAll();
 <body>
     <header class="site-header">
         <div class="container header-inner">
-            <a href="index.html" class="logo">
+            <a href="index.php" class="logo">
                 <span class="wave"></span>Lagon<span>Jobs</span>
             <nav class="nav">
                 <a href="index.php">Tableau de bord</a>
