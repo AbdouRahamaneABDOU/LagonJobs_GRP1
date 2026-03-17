@@ -1,16 +1,54 @@
 <?php
 require_once(__DIR__ . '/bdd.php');
 
+//Jointure  
+$sqlQuery = 
+'SELECT of.Id,
+of.Titre,
+of.Description,
+of.Missions,
+of.Profil,
+ca.NomCategorie,
+vi.NomVille,
+st.NomStatut,
+co.TypeContrat,
+mo.NomModeTravail
+FROM offres of 
+JOIN categorie ca on ca.Id = of.Id_Categorie
+JOIN ville vi on vi.Id = of.Id_Ville
+JOIN statut st on st.Id = of.Id_Statut
+JOIN contrats co on co.Id = of.Id_Contrats
+JOIN modetravail mo on mo.Id = of.Id_ModeTravail;';
+$SelectOffres=$mysqlClient->prepare($sqlQuery);
+$SelectOffres->execute();
+$Offres=$SelectOffres->fetchAll();
 
-$sqlQuery = 'SELECT * FROM contrats';
-$contratsStatement = $mysqlClient->prepare($sqlQuery);
-$contratsStatement->execute();
-$contrats = $contratsStatement->fetchAll();
+$sqlQuery='SELECT * FROM  categorie';
+$selectCat=$mysqlClient->prepare($sqlQuery);
+$selectCat->execute();
+$Cate=$selectCat->fetchAll();
 
-$sqlQuery = 'SELECT * FROM offres';
-$mdtrvlStatement = $mysqlClient->prepare($sqlQuery);
-$mdtrvlStatement->execute();
-$job = $mdtrvlStatement->fetchAll();
+$sqlQuery='SELECT * FROM  ville';
+$selectVille=$mysqlClient->prepare($sqlQuery);
+$selectVille->execute();
+$Villes=$selectVille->fetchAll();
+
+$sqlQuery='SELECT * FROM  statut';
+$selectStatut=$mysqlClient->prepare($sqlQuery);
+$selectStatut->execute();
+$Statut=$selectStatut->fetchAll();
+
+$sqlQuery='SELECT * FROM  contrats';
+$selectContrat=$mysqlClient->prepare($sqlQuery);
+$selectContrat->execute();
+$Contrats=$selectContrat->fetchAll();
+
+$sqlQuery='SELECT * FROM  modetravail';
+$selectMode=$mysqlClient->prepare($sqlQuery);
+$selectMode->execute();
+$ModeTravail=$selectMode->fetchAll();
+
+
 ?>
 
 
@@ -59,8 +97,8 @@ $job = $mdtrvlStatement->fetchAll();
                     <select name="contrat">
                     <option selected>TypeContrat</option>
                    <?php
-                    for ($i = 0; $i < count($contrats); $i++) {
-                        echo '<option value= "'.$contrats[$i]['Id'].'">'.$contrats[$i]['TypeContrat'].' </option>';
+                    for ($i = 0; $i < count($Contrats); $i++) {
+                        echo '<option value= "'.$Contrats[$i]['Id'].'">'.$Contrats[$i]['TypeContrat'].' </option>';
                         } 
                     ?>
                     </select>
@@ -68,8 +106,8 @@ $job = $mdtrvlStatement->fetchAll();
                     <select name="job">
                         <option selected>ModeTravail</option>
                         <?php
-                        for ($i = 0; $i < count($job); $i++) {
-                            echo '<option value= "'.$job[$i]['Id'].'">'.$job[$i]['NomModeTravail'].' </option>';
+                        for ($i = 0; $i < count($ModeTravail); $i++) {
+                            echo '<option value= "'.$ModeTravail[$i]['Id'].'">'.$ModeTravail[$i]['NomModeTravail'].' </option>';
                             } 
                     ?>
                     </select>
@@ -99,30 +137,17 @@ $job = $mdtrvlStatement->fetchAll();
             <h2>Dernières offres</h2>
 
             <div class="cards">
-
-                <article class="card">
-                    <p class="badge">Stage</p>
-                    <h3>Stagiaire – Développeur Web</h3>
-                    <p class="meta">Mamoudzou - Hybride</p>
-                    <p>Participer au développement du site e-commerce.</p>
-                    <a class="btn btn-outline" href="detail_offre1.php">Voir</a>
-                </article>
-
-                <article class="card">
-                    <p class="badge">CDD</p>
-                    <h3>Technicien Support</h3>
-                    <p class="meta">Dzaoudzi - Hybride</p>
-                    <p>Assistance utilisateur, maintenance du matériel IT.</p>
-                    <a class="btn btn-outline" href="detail_offre2.php">Voir</a>
-                </article>
-
-                <article class="card">
-                    <p class="badge">CDI</p>
-                    <h3>Admin Systèmes Junior</h3>
-                    <p class="meta">Koungou - Télétravail</p>
-                    <p>Gestion serveurs Linux / Windows, sauvegardes.</p>
-                    <a class="btn btn-outline" href="detail_offre3.php">Voir</a>
-                </article>
+                <?php 
+                for ($i=0;$i<count($Offres);$i++) { ?>
+                    <article class="card">
+                        <p class="badge"><?php echo $Offres[$i]['TypeContrat']?></p>
+                        <h3><?php echo $Offres[$i]['Titre']; ?></h3>
+                        <p class="meta"><?php echo $Offres[$i]['NomVille']?> - <?php echo $Offres[$i]['NomModeTravail']?></p>
+                        <p><?php echo $Offres[$i]['Description']?></p>
+                        <a class="btn btn-outline" href="detail_offre1.php">Voir</a>
+                    </article>
+                <?php 
+                }?>
 
             </div>
         </div>
