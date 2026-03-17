@@ -120,32 +120,19 @@ $Role=$selectrole->fetchAll();
     <p>Gérer les comptes des candidats, utilisateurs et administrateurs.</p>
 
     <!-- Filtres -->
-    <form class="search-inline form" action="user.php" method="get">
-      <div class="row"> 
-        <div>
-            <label for="Prenom">Prénom </label>
-            <input type="text" name="AjoutPrenom">
-        </div>
-        <div>
-            <label for="Nom">Nom </label>
-            <input type="text" name="AjoutNom">
-        </div>
-      </div>
-      <div class="row">
-        <div>
-          <label for="Mail">Email </label>
-          <input type="text" name="AjoutMail">
-        </div>
-        <div>
-          <label for="Mdp">Password </label>
-          <input type="password" name="AjoutMdp">
-        </div>
-      </div>
+    <form class="form filter-bar" action="user.php" method="get">
+
+            <input type="text" name="AjoutPrenom" placeholder="Prenom">
+
+            <input type="text" name="AjoutNom" placeholder="Nom">
+
+          <input type="text" name="AjoutMail" placeholder="Email">
+
+          <input type="password" name="AjoutMdp" placeholder="Mot de passe">
+      
 
 
-      <div class="row">
-        <div>
-            <label for="Role">Rôle</label>
+
             <select name="AjoutRole">
             <?php
             for($i = 0; $i< count($Role); $i++) {
@@ -153,16 +140,9 @@ $Role=$selectrole->fetchAll();
             }
             ?>
             </select>
-        </div>
-        <div class="btn-ajouter">
-          <label>&nbsp;</label>
-          <input  type="submit" value="Ajouter">
-        </div>
-      </div>
 
-      <div class="btn-ajouter">
-        <input type="reset" value="Rénitialiser">
-      </div>
+          <button type="submit" class="btn btn-outline">Ajouter</button>
+
     </form>
   </div>
 </section>
