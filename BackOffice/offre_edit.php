@@ -82,7 +82,7 @@ $ModeTravail=$selectMode->fetchAll();
                         <?php 
                         for ($i=0;$i<count($Villes);$i++) {
                             if(isset($_POST['Ville_of_edit']) && $Villes[$i]['Id']===intval($_POST['Ville_of_edit'])) { 
-                                echo "<option value=".$Villes[$i]['Id']."selected>".$Villes[$i]['NomVille']."</option>";
+                                echo "<option value=".$Villes[$i]['Id']." selected>".$Villes[$i]['NomVille']."</option>";
                             }else{
                                 echo "<option value=".$Villes[$i]['Id'].">".$Villes[$i]['NomVille']."</option>";
                             }
@@ -94,7 +94,7 @@ $ModeTravail=$selectMode->fetchAll();
                         <?php 
                         for ($i=0;$i<count($ModeTravail);$i++) {
                             if(isset($_POST['Mode_of_edit']) && $ModeTravail[$i]['Id']===intval($_POST['Mode_of_edit'])) { 
-                                echo "<option value=".$ModeTravail[$i]['Id']."selected>".$ModeTravail[$i]['NomModeTravail']."</option>";
+                                echo "<option value=".$ModeTravail[$i]['Id']." selected>".$ModeTravail[$i]['NomModeTravail']."</option>";
                             }else{
                                 echo "<option value=".$ModeTravail[$i]['Id'].">".$ModeTravail[$i]['NomModeTravail']."</option>";
                             }
@@ -106,7 +106,7 @@ $ModeTravail=$selectMode->fetchAll();
                         <?php 
                         for ($i=0;$i<count($Contrats);$i++) {
                             if(isset($_POST['Contract_of_edit']) && $Contrats[$i]['Id']===intval($_POST['Contract_of_edit'])) { 
-                                echo "<option value=".$Contrats[$i]['Id']."selected>".$Contrats[$i]['TypeContrat']."</option>";
+                                echo "<option value=".$Contrats[$i]['Id']." selected>".$Contrats[$i]['TypeContrat']."</option>";
                             }else{
                                 echo "<option value=".$Contrats[$i]['Id'].">".$Contrats[$i]['TypeContrat']."</option>";
                             }
@@ -118,7 +118,7 @@ $ModeTravail=$selectMode->fetchAll();
                         <?php 
                         for ($i=0;$i<count($Cate);$i++) {
                             if(isset($_POST['Cat_of_edit']) && $Cate[$i]['Id']===intval($_POST['Cat_of_edit'])) { 
-                                echo "<option value=".$Cate[$i]['Id']."selected>".$Cate[$i]['NomCategorie']."</option>";
+                                echo "<option value=".$Cate[$i]['Id']." selected>".$Cate[$i]['NomCategorie']."</option>";
                             }else{
                                 echo "<option value=".$Cate[$i]['Id'].">".$Cate[$i]['NomCategorie']."</option>";
                             }
@@ -130,7 +130,7 @@ $ModeTravail=$selectMode->fetchAll();
                         <?php 
                         for ($i=0;$i<count($Statut);$i++) {
                             if(isset($_POST['Statut_of_edit']) && $Statut[$i]['Id']===intval($_POST['Statut_of_edit'])) { 
-                                echo "<option value=".$Statut[$i]['Id']."selected>".$Statut[$i]['NomStatut']."</option>";
+                                echo "<option value=".$Statut[$i]['Id']." selected>".$Statut[$i]['NomStatut']."</option>";
                             }else{
                                 echo "<option value=".$Statut[$i]['Id'].">".$Statut[$i]['NomStatut']."</option>";
                             }

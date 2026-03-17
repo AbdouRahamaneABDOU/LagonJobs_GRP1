@@ -93,6 +93,11 @@ of.Titre,
 of.Description,
 of.Missions,
 of.Profil,
+of.Id_Contrats,
+of.Id_Ville,
+of.Id_Statut,
+of.Id_ModeTravail,
+of.Id_Categorie,
 ca.NomCategorie,
 vi.NomVille,
 st.NomStatut,
@@ -302,11 +307,11 @@ $ModeTravail=$selectMode->fetchAll();
                                 <input type="hidden" name="Desc_of_edit" value="<?php echo $Offres[$i]['Description']?>">
                                 <input type="hidden" name="Profil_of_edit" value="<?php echo $Offres[$i]['Profil']?>">
                                 <input type="hidden" name="Mission_of_edit" value="<?php echo $Offres[$i]['Missions']?>">
-                                <input type="hidden" name="Cat_of_edit" value="<?php echo $Offres[$i]['NomCategorie']?>">
-                                <input type="hidden" name="Ville_of_edit" value="<?php echo $Offres[$i]['NomVille']?>">
-                                <input type="hidden" name="Contract_of_edit" value="<?php echo $Offres[$i]['TypeContrat']?>">
-                                <input type="hidden" name="Mode_of_edit" value="<?php echo $Offres[$i]['NomModeTravail']?>">
-                                <input type="hidden" name="Statut_of_edit" value="<?php echo $Offres[$i]['NomStatut']?>">
+                                <input type="hidden" name="Cat_of_edit" value="<?php echo $Offres[$i]['Id_Categorie']?>">
+                                <input type="hidden" name="Ville_of_edit" value="<?php echo $Offres[$i]['Id_Ville']?>">
+                                <input type="hidden" name="Contract_of_edit" value="<?php echo $Offres[$i]['Id_Contrats']?>">
+                                <input type="hidden" name="Mode_of_edit" value="<?php echo $Offres[$i]['Id_ModeTravail']?>">
+                                <input type="hidden" name="Statut_of_edit" value="<?php echo $Offres[$i]['Id_Statut']?>">
                                 <button type="submit" class="btn">Éditer</button >
                             </form>
                             <form action="offre.php" method="POST">

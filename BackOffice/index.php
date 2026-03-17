@@ -2,9 +2,28 @@
 
 require_once(__DIR__ . '/bdd.php');
 
-//modification de l'offre
+//Modification d'une offre
+if(isset($_POST['mod_id']) && 
+isset($_POST['mod_metier']) &&
+isset($_POST['mod_description']) &&
+isset($_POST['mod_categorie']) &&
+isset($_POST['mod_statut'])){
+  $ModId=$_POST['mod_id'];
+  $Mod_Metier=$_POST['mod_metier'];
+  $Mod_Descrip=$_POST['mod_description'];
+  $Mod_Cate=$_POST['mod_categorie'];
+  $Mod_Statut=$_POST['mod_statut'];
 
-
+  $sqlQuery = "UPDATE `offres` SET `Titre`=:titre,`Description`=:des,`Id_Categorie`=:IdCa,`Id_Statut`=:IdSa WHERE Id=:id";
+  $editOffre = $mysqlClient->prepare($sqlQuery);
+  $editOffre->execute([
+    'id'=> $ModId,
+    'titre'=> $Mod_Metier,
+    'des'=>$Mod_Descrip,
+    'IdCa'=> $Mod_Cate,
+    'IdSa'=> $Mod_Statut
+  ]);
+}
 //suppression d'une offre 
 if (isset($_POST['supp_offre'])){
   $Supp_Offre=$_POST['supp_offre'];
@@ -22,6 +41,8 @@ Ville.NomVille,
 Statut.NomStatut,
 Offres.Titre,
 Offres.Description,
+Offres.Id_Categorie,
+Offres.Id_Statut,
 Categorie.NomCategorie
 FROM Offres
 JOIN Statut on Statut.Id = Offres.Id_Statut
@@ -137,7 +158,14 @@ $Cate=$selectCat->fetchAll();
                         <td><?php echo $Offres[$i]['Description']?></td>
 
                         <td>
-                            <button type="submit" class="btn" onclick="openPopup()">Éditer</button >
+                            <form action="edit_index.php" method="POST">
+                                <input type="hidden" name="id_edit" value="<?php echo $Offres[$i]['Id']?>">
+                                <input type="hidden" name="Titre_edit" value="<?php echo $Offres[$i]['Titre']?>">
+                                <input type="hidden" name="Desc_edit" value="<?php echo $Offres[$i]['Description']?>">
+                                <input type="hidden" name="Statut_edit" value="<?php echo $Offres[$i]['Id_Statut']?>">
+                                <input type="hidden" name="Cat_edit" value="<?php echo $Offres[$i]['Id_Categorie']?>">
+                                <button type="submit" class="btn" >Éditer</button >
+                            </form>
                             <form action="index.php" method="POST">
                                 <input type="hidden" name="supp_offre" value="<?php echo $Offres[$i]['Id']?>">
                                 <button type="submit" class="btn">Supprimer</button >
@@ -160,18 +188,20 @@ $Cate=$selectCat->fetchAll();
         </div>
     </footer>
 
-    <div class="popup-fond">
+    <!--<div class="popup-fond">
         <div class="popup-content">
             <form>
                 <label>Titre</label>
                 <input type="text" name="title" />
                 <label>Description</label>
                 <textarea type="text" name="desc"></textarea>
+                <label>Description</label>
+                <textarea type="text" name="desc"></textarea>
                 <button type="submit" class="btn">Modifier</button>
-                <a href="javascrip:void(0)" class="popup-exit" onclick="openPopup()">X</a>
+                <a href="javascrip:void(0)" class="popup-exit" onclick="openPopup()">Annuler</a>
             </form>
         </div>
 
-    </div>
+    </div>-->
 </body>
 </html>
