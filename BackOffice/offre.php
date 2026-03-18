@@ -185,6 +185,7 @@ $ModeTravail=$selectMode->fetchAll();
                     
                     <label for="listbox">Ville</label>
                     <select name="ville" >
+                        <option selected>Sélectionnez le nom de la ville :</option>
                         <?php 
                         for ($i=0;$i<count($Villes);$i++) {
                             if(isset($_POST['ville']) && $Villes[$i]['Id']===intval($_POST['ville'])) { 
@@ -197,6 +198,7 @@ $ModeTravail=$selectMode->fetchAll();
 
                     <label for="listbox">Mode de travail</label>
                     <select name="modetravail" >
+                        <option selected>Sélectionnez le mode de travail : </option>
                         <?php 
                         for ($i=0;$i<count($ModeTravail);$i++) {
                             if(isset($_POST['modetravail']) && $ModeTravail[$i]['Id']===intval($_POST['modetravail'])) { 
@@ -209,6 +211,7 @@ $ModeTravail=$selectMode->fetchAll();
 
                     <label for="listbox">Contrat</label>
                     <select name="contrat" >
+                        <option selected>Sélectionnez le contrat :</option>
                         <?php 
                         for ($i=0;$i<count($Contrats);$i++) {
                             if(isset($_POST['contrat']) && $Contrats[$i]['Id']===intval($_POST['contrat'])) { 
@@ -221,6 +224,7 @@ $ModeTravail=$selectMode->fetchAll();
 
                     <label for="listbox" name="categorie">Catégorie</label>
                     <select name="categorie" >
+                        <option selected>Sélectionnez la catégorie :</option>
                         <?php 
                         for ($i=0;$i<count($Cate);$i++) {
                             if(isset($_POST['categorie']) && $Cate[$i]['Id']===intval($_POST['categorie'])) { 
@@ -233,6 +237,7 @@ $ModeTravail=$selectMode->fetchAll();
 
                     <label for="listbox" name="statut">Statut</label>
                     <select name="statut" >
+                        <option selected>Sélectionnez le statut :</option>
                         <?php 
                         for ($i=0;$i<count($Statut);$i++) {
                             if(isset($_POST['statut']) && $Statut[$i]['Id']===intval($_POST['statut'])) { 
@@ -243,7 +248,7 @@ $ModeTravail=$selectMode->fetchAll();
                         } ?>
                     </select>
                     
-                    <button type="submit" class="btn">Ajouter</button>
+                    <button type="submit" class="btn">Enregistrez</button>
                     <button type="reset" class="btn">Réinitialiser</button>
                     
                 </div>
@@ -251,81 +256,7 @@ $ModeTravail=$selectMode->fetchAll();
 
 
         </div>
-</br>
 
-        <div class="container card">
-            <h2>Liste des métiers</h2>
-            <table >
-                <tr>
-                    <th>Titre</th>
-                    <th>Description</th>
-                    <th>Profil</th>
-                    <th>Missions</th>
-                    <th>Catégorie</th>
-                    <th>Ville</th>
-                    <th>Contrat</th>
-                    <th>Mode de travail</th>
-                    <th>Statut</th>
-                    <th>Actions</th>
-                </tr>
-                <?php 
-
-                for ($i=0;$i<count($Offres);$i++) {
-                ?>  
-                    <tr>
-                        <td>
-                            <?php echo $Offres[$i]['Titre']; ?>
-                        </td>
-                        <td>
-                            <?php echo $Offres[$i]['Description']; ?>
-                        </td>
-                        <td>
-                            <?php echo $Offres[$i]['Profil']; ?>
-                        </td>
-                        <td>
-                            <?php echo $Offres[$i]['Missions']; ?>
-                        </td>
-                        <td>
-                            <?php echo $Offres[$i]['NomCategorie']; ?>
-                        </td>
-                        <td>
-                            <?php echo $Offres[$i]['NomVille']; ?>
-                        </td>
-                        <td>
-                            <?php echo $Offres[$i]['TypeContrat']; ?>
-                        </td>
-                        <td>
-                            <?php echo $Offres[$i]['NomModeTravail']; ?>
-                        </td>
-                        <td>
-                            <?php echo $Offres[$i]['NomStatut']; ?>
-                        </td>
-                         <td>
-                            <form action="offre_edit.php" method="POST">
-                                <input type="hidden" name="id_of_edit" value="<?php echo $Offres[$i]['Id']?>">
-                                <input type="hidden" name="Titre_of_edit" value="<?php echo $Offres[$i]['Titre']?>">
-                                <input type="hidden" name="Desc_of_edit" value="<?php echo $Offres[$i]['Description']?>">
-                                <input type="hidden" name="Profil_of_edit" value="<?php echo $Offres[$i]['Profil']?>">
-                                <input type="hidden" name="Mission_of_edit" value="<?php echo $Offres[$i]['Missions']?>">
-                                <input type="hidden" name="Cat_of_edit" value="<?php echo $Offres[$i]['Id_Categorie']?>">
-                                <input type="hidden" name="Ville_of_edit" value="<?php echo $Offres[$i]['Id_Ville']?>">
-                                <input type="hidden" name="Contract_of_edit" value="<?php echo $Offres[$i]['Id_Contrats']?>">
-                                <input type="hidden" name="Mode_of_edit" value="<?php echo $Offres[$i]['Id_ModeTravail']?>">
-                                <input type="hidden" name="Statut_of_edit" value="<?php echo $Offres[$i]['Id_Statut']?>">
-                                <button type="submit" class="btn">Éditer</button >
-                            </form>
-                            <form action="offre.php" method="POST">
-                                <input type="hidden" name="supp_offre" value="<?php echo $Offres[$i]['Id']?>">
-                                <button type="submit" class="btn">Supprimer</button >
-                            </form>
-                        </td>
-                       
-                    </tr>
-                <?php
-                }
-                ?>
-            </table>
-        </div>
     </main>
    
     <footer class="site-footer">

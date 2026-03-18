@@ -60,7 +60,7 @@ $ModeTravail=$selectMode->fetchAll();
 
         <div class="container">
             <h1>Modification de l'offre</h1>
-            <form action="offre.php" method="POST" class="form">
+            <form action="index.php" method="POST" class="form">
 
                 <div>
                     <input name="mod_id" type="hidden" value="<?php echo $_POST['id_of_edit']?>">
@@ -138,7 +138,7 @@ $ModeTravail=$selectMode->fetchAll();
                     </select>
                     
                     <button type="submit" class="btn">Modifier</button>
-                    <button type="reset" class="btn">Réinitialiser</button>
+                    <button type="reset" class="btn">Annuler</button>
                     
                 </div>
             </form>
