@@ -18,7 +18,7 @@ JOIN categorie ca on ca.Id = of.Id_Categorie
 JOIN ville vi on vi.Id = of.Id_Ville
 JOIN statut st on st.Id = of.Id_Statut
 JOIN contrats co on co.Id = of.Id_Contrats
-JOIN modetravail mo on mo.Id = of.Id_ModeTravail;';
+JOIN modetravail mo on mo.Id = of.Id_ModeTravail ORDER BY Id DESC;';
 $SelectOffres=$mysqlClient->prepare($sqlQuery);
 $SelectOffres->execute();
 $Offres=$SelectOffres->fetchAll();
@@ -144,7 +144,18 @@ $ModeTravail=$selectMode->fetchAll();
                         <h3><?php echo $Offres[$i]['Titre']; ?></h3>
                         <p class="meta"><?php echo $Offres[$i]['NomVille']?> - <?php echo $Offres[$i]['NomModeTravail']?></p>
                         <p><?php echo $Offres[$i]['Description']?></p>
-                        <a class="btn btn-outline" href="detail_offre1.php">Voir</a>
+                        <form action="detail_offre.php" method="post">
+                            <input type="hidden" name="id" value="<?php echo $Offres[$i]['Id'] ?>">
+                            <input type="hidden" name="titre" value="<?php echo $Offres[$i]['Titre'] ?>">
+                            <input type="hidden" name="mission" value="<?php echo $Offres[$i]['Missions'] ?>">
+                            <input type="hidden" name="des" value="<?php echo $Offres[$i]['Description'] ?>">
+                            <input type="hidden" name="profil" value="<?php echo $Offres[$i]['Profil'] ?>">
+                            <input type="hidden" name="ville" value="<?php echo $Offres[$i]['NomVille'] ?>">
+                            <input type="hidden" name="mode" value="<?php echo $Offres[$i]['NomModeTravail'] ?>">
+                            <input type="hidden" name="TypeC" value="<?php echo $Offres[$i]['TypeContrat'] ?>">
+                            
+                            <button type="submit" class="btn btn-outline">Voir</button>
+                        </form>
                     </article>
                 <?php 
                 }?>
