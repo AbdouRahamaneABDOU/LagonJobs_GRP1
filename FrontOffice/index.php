@@ -1,4 +1,5 @@
 <?php
+// Verifier si la session existe
 session_start();
 if (!isset($_SESSION['user'])) {
     header('Location: login.php');
