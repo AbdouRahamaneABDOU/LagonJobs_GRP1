@@ -4,44 +4,47 @@ require_once(__DIR__ . '/bdd.php');
 
 
 
-$postData = $_POST;
+
 
 // Validation du formulaire
-if (isset($postData['mail']) && isset($postData['mdp'])) {
-    if (!filter_var($postData['mail'], FILTER_VALIDATE_EMAIL)) {
+if (isset($_POST['mail']) && isset($_POST['mdp'])) {
+    if (!filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
         $errorMessage = 'Il faut un mail valide pour soumettre le formulaire.';
     } else {
-        $sqlQuery='SELECT * FROM  utilisateurs';
+        // On recupère de l'utilisateur à partir de l'email 
+        // SELECT `Email`, `MDP` FROM `user` WHERE 1
+
+        $sqlQuery='SELECT Id,Mail,Password,Id_Role FROM Utilisateurs WHERE Mail = :mail';
         $selectusers=$mysqlClient->prepare($sqlQuery);
-        $selectusers->execute();
-        $utilisateurs=$selectusers->fetchAll();
+        $selectusers->execute([
+        'mail' => $_POST['mail']
+        ]);
 
-        foreach ($utilisateurs as $utilisateur) {
-            if (
-                $utilisateur['Mail'] === $postData['mail'] && 
-                $utilisateur['Password'] === $postData['mdp']
-            ) {
-                $loggedUser = [
-                    'mail' => $utilisateur['Mail'],
-                ];
+        $utilisateur=$selectusers->fetchAll();
 
-            }
-        }
-
-        if (!isset($loggedUser)) {
-            $errorMessage = sprintf(
-                'Les informations envoyés ne permettent pas de vous identifier : (%s/%s)',
-                $postData['mail'],
-                strip_tags($postData['mdp'])
-            );
-            header('Location: login.php');
-            exit();
+        if (count($utilisateur) <= 0) {
+            //die('Votre email ou mot de passe est incorrecte. 1');
+            die('Aucun utilisateur n existe avec cet email');
         }
 
         
-    }
-    header('Location: index.php');
-    exit();
+        
+        if (password_verify($_POST["mdp"], $utilisateur[0]["Password"])) {
+            echo 'Password is valid!';
+        } else {
+            die('Votre mot de passe est incorrecte.');
+        }
 
+
+        $_SESSION['user'] = [
+            'iduser' => $utilisateur[0]["Id"],
+            'mail' => $utilisateur[0]["Mail"],
+            'LeRole' => $utilisateur[0]["Id_role"],
+        ];
+
+        header('Location: index.php');
+        exit;
+
+    }
 }
 ?>
