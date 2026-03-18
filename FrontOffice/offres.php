@@ -7,10 +7,12 @@ Ville.NomVille,
 Statut.NomStatut,
 Offres.Titre,
 Offres.Description,
+Contrats.TypeContrat,
 Categorie.NomCategorie
 FROM Offres
 JOIN Ville on Ville.Id = Offres.Id_Ville
 JOIN Statut on Statut.Id = Offres.Id_Statut
+JOIN Contrats on Contrats.Id = Offres.Id_Contrats
 JOIN Categorie on Categorie.Id = Offres.Id_Categorie;';
 $SelectOffres=$mysqlClient->prepare($sqlQuery);
 $SelectOffres->execute();
@@ -101,10 +103,10 @@ $Travail=$selectwork->fetchAll();
                 <div class="cards">
                     <?php foreach($Offres as $Offres){ ?>
                         <article class="card">
-                            <p class="badge"><?php echo $Offres['Categorie'] ?></p>
+                            <p class="badge"><?php echo $Offres['TypeContrat'] ?></p>
                             <h3> <?php echo $Offres['Titre'] ?></h2>
 
-                            <p><?php echo $Offres['Ville'] ?></p>
+                            <p><?php echo $Offres['NomVille'] ?></p>
 
                             <p><?php echo $Offres['Description'] ?></p>
                             <form action="detail_offre.php" method="get">
