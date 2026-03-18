@@ -138,7 +138,7 @@ $ModeTravail=$selectMode->fetchAll();
 
             <div class="cards">
                 <?php 
-                for ($i=0;$i<count($Offres);$i++) { ?>
+                for ($i=0;$i< 4;$i++) { ?>
                     <article class="card">
                         <p class="badge"><?php echo $Offres[$i]['TypeContrat']?></p>
                         <h3><?php echo $Offres[$i]['Titre']; ?></h3>
