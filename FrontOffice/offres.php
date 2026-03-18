@@ -1,18 +1,24 @@
 <?php
 require_once(__DIR__ . '/bdd.php');
 
+
+
 $sqlQuery = 
 'SELECT Offres.Id, 
 Ville.NomVille, 
 Statut.NomStatut,
 Offres.Titre,
+Offres.Missions,
+Offres.Profil,
 Offres.Description,
 Contrats.TypeContrat,
+ModeTravail.NomModeTravail,
 Categorie.NomCategorie
 FROM Offres
 JOIN Ville on Ville.Id = Offres.Id_Ville
 JOIN Statut on Statut.Id = Offres.Id_Statut
 JOIN Contrats on Contrats.Id = Offres.Id_Contrats
+JOIN ModeTravail on ModeTravail.Id = Offres.Id_ModeTravail
 JOIN Categorie on Categorie.Id = Offres.Id_Categorie;';
 $SelectOffres=$mysqlClient->prepare($sqlQuery);
 $SelectOffres->execute();
@@ -101,16 +107,23 @@ $Travail=$selectwork->fetchAll();
             <br>
             <div class="container">
                 <div class="cards">
-                    <?php foreach($Offres as $Offres){ ?>
+                    <?php foreach($Offres as $Offre){ ?>
                         <article class="card">
-                            <p class="badge"><?php echo $Offres['TypeContrat'] ?></p>
-                            <h3> <?php echo $Offres['Titre'] ?></h2>
+                            <p class="badge"><?php echo $Offre['TypeContrat'] ?></p>
+                            <h3> <?php echo $Offre['Titre'] ?></h2>
 
-                            <p><?php echo $Offres['NomVille'] ?></p>
-
-                            <p><?php echo $Offres['Description'] ?></p>
-                            <form action="detail_offre.php" method="get">
-                                <input type="hidden" name="id" value="<?php echo $Offres['Id'] ?>">
+                            <p><?php echo $Offre['NomVille'] ?> - <?php echo $Offre['NomModeTravail']?></p>
+                            <p><?php echo $Offre['Description'] ?></p>
+                            <form action="detail_offre.php" method="post">
+                                <input type="hidden" name="id" value="<?php echo $Offre['Id'] ?>">
+                                <input type="hidden" name="titre" value="<?php echo $Offre['Titre'] ?>">
+                                <input type="hidden" name="mission" value="<?php echo $Offre['Missions'] ?>">
+                                <input type="hidden" name="des" value="<?php echo $Offre['Description'] ?>">
+                                <input type="hidden" name="profil" value="<?php echo $Offre['Profil'] ?>">
+                                <input type="hidden" name="ville" value="<?php echo $Offre['NomVille'] ?>">
+                                <input type="hidden" name="mode" value="<?php echo $Offre['NomModeTravail'] ?>">
+                                <input type="hidden" name="TypeC" value="<?php echo $Offre['TypeContrat'] ?>">
+                                
                                 <button type="submit" class="btn btn-outline">Détail</button>
                             </form>
                         </article>  

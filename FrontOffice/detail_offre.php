@@ -1,24 +1,24 @@
 <?php
 require_once(__DIR__ . '/bdd.php');
 
+if(isset($_POST['id']) && 
+isset($_POST['titre']) &&
+isset($_POST['mission']) &&
+isset($_POST['des']) &&
+isset($_POST['ville']) &&
+isset($_POST['mode']) &&
+isset($_POST['TypeC']) &&
+isset($_POST['profil'])){
+    $Id = $_POST['id'];
+    $Titr = $_POST['titre'];
+    $Miss = $_POST['mission'];
+    $Prof = $_POST['profil'];
+    $des = $_POST['des'];
+    $city = $_POST['ville'];
+    $Mdt = $_POST['mode'];
+    $TC = $_POST['TypeC'];
+}
 
-$sqlQuery = 
-'SELECT of.Id,  
-of.Ville,   
-of.Statut,
-jb.Titre,
-jb.Description,
-jb.Categorie
-FROM offres of
-JOIN job jb on jb.Id = of.Id_job;';
-$SelectOffres=$mysqlClient->prepare($sqlQuery);
-$SelectOffres->execute();
-$Offres=$SelectOffres->fetch();  
-
-$sqlQuery='SELECT * FROM  job';
-$selectjob=$mysqlClient->prepare($sqlQuery);    
-$selectjob->execute();
-$Jobs=$selectjob->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -46,17 +46,14 @@ $Jobs=$selectjob->fetchAll();
 
     <section class="hero">
         <div class="container">
-            <a href="offres.php">← Retour aux offres</a>
-</br>   
-</br>
             <div >
-                <p class="badge btn">Stage</p>
-                <h1> Stagiaire Développeur Web</h1>
+                <p class="badge btn"><?php echo $TC?></p>
+                <h1> <?php echo $Titr?></h1>
             
-                <p>Mamoudzou - Hybride - 3 à 6 mois </p>
-            
-                <p><b>Missions</b> : Intégrer des maquettes, corriger les bugs, participer aux revues de codes (niveau débutant)</p>
-                <p><b>Profil </b>: motivation, bases HTML/CSS/JS, notions PHP bienvenues</p>
+                <p><?php echo $city?> - <?php echo $Mdt?> - 3 à 6 mois </p>
+                <p><b>Description</b> : <?php echo $des?></p>
+                <p><b>Missions</b> : <?php echo $Miss?></p>
+                <p><b>Profil </b>: <?php echo $Prof?></p>
                 <a href="postuler.php" class="btn btn-outline">Postuler</a>
                 <a href="offres.php" class="btn btn-outline">Autres offres</a>  
             </div>  
