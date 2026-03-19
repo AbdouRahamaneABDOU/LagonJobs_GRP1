@@ -19,7 +19,26 @@ JOIN Ville on Ville.Id = Offres.Id_Ville
 JOIN Statut on Statut.Id = Offres.Id_Statut
 JOIN Contrats on Contrats.Id = Offres.Id_Contrats
 JOIN ModeTravail on ModeTravail.Id = Offres.Id_ModeTravail
-JOIN Categorie on Categorie.Id = Offres.Id_Categorie;';
+JOIN Categorie on Categorie.Id = Offres.Id_Categorie WHERE 1 = 1';
+
+if(isset($_GET['keyword'])){
+    $sqlQuery.= ' AND Offres.Titre LIKE "%'.$_GET['keyword'].'%"';
+}
+
+if(isset($_GET['ville']) && $_GET['ville']!= 'Ville' ){
+    $sqlQuery.= ' AND Offres.Id_Ville = '.$_GET['ville'];
+}
+
+if(isset($_GET['typeC']) && $_GET['typeC']!= 'TypeContrat' ){
+    $sqlQuery.= ' AND Offres.Id_Contrats = '.$_GET['typeC'];
+}
+
+if(isset($_GET['ModeTravail']) && $_GET['ModeTravail']!= 'ModeTravail' ){
+    $sqlQuery.= ' AND Offres.Id_ModeTravail = '.$_GET['ModeTravail'];
+}
+
+
+
 $SelectOffres=$mysqlClient->prepare($sqlQuery);
 $SelectOffres->execute();
 $Offres=$SelectOffres->fetchAll();
@@ -71,11 +90,11 @@ $Travail=$selectwork->fetchAll();
             <div class="container">
         
                 <form action="offres.php" method="get" class="search-inline card">
-                    <input type="text" placeholder="Mot-clé">
+                    <input type="text" placeholder="Mot-clé" name="keyword">
 
                     <label for="listbox">
-                    <select name="type">
-                        <option selected>TypeContrat</option>
+                    <select name="typeC">
+                        <option>TypeContrat</option>
                         <?php for($i = 0; $i< count($Contrats); $i++) {
                             echo '<option value= "'.$Contrats[$i]['Id'].'">'.$Contrats[$i]['TypeContrat'].'</option>';
                             } ?>
@@ -83,7 +102,7 @@ $Travail=$selectwork->fetchAll();
 
                     <label for="listbox">
                     <select name="ville">
-                        <option selected>Ville</option>
+                        <option>Ville</option>
                         <?php for($i = 0; $i< count($City); $i++) {
                             echo '<option value= "'.$City[$i]['Id'].'">'.$City[$i]['NomVille'].'</option>';
                             } ?>
@@ -91,7 +110,7 @@ $Travail=$selectwork->fetchAll();
 
                     <label for="listbox">
                     <select name="ModeTravail">
-                        <option selected>ModeTravail</option>
+                        <option >ModeTravail</option>
                         <?php for($i = 0; $i< count($Travail); $i++) {
                             echo '<option value= "'.$Travail[$i]['Id'].'">'.$Travail[$i]['NomModeTravail'].'</option>';
                             } ?>
