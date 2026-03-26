@@ -64,6 +64,7 @@ $ModeTravail=$selectMode->fetchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LagonJobs – Accueil</title>
+    <link rel="icon" type="image/png" href="../img/Logo2.png">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 
@@ -73,7 +74,7 @@ $ModeTravail=$selectMode->fetchAll();
     <header class="site-header">
         <div class="container header-inner">
             <a class="logo" href="index.php">
-                <span class="wave"></span>Lagon<span>Jobs</span>
+                <img src="../img/Logo.png" alt="Logo">
             </a>
 
             <nav class="nav">

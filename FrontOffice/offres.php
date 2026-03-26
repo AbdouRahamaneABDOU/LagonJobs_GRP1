@@ -65,13 +65,16 @@ $Travail=$selectwork->fetchAll();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Offres</title>
+    <link rel="icon" type="image/png" href="../img/Logo2.png">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <header class="site-header">
+       <header class="site-header">
         <div class="container header-inner">
-            <a href="index.php" class="logo">
-                <span class="wave"></span>Lagon<span>Jobs</span>
+            <a class="logo" href="index.php">
+                <img src="../img/Logo.png" alt="Logo">
+            </a>
+
             <nav class="nav">
                 <a href="index.php">Accueil</a>
                 <a href="offres.php">Offres</a>
@@ -96,8 +99,10 @@ $Travail=$selectwork->fetchAll();
                     <select name="typeC">
                         <option>TypeContrat</option>
                         <?php for($i = 0; $i< count($Contrats); $i++) {
+                            if(isset($_GET['Ville_of_edit']) && $Contrats[$i]['Id']===intval($_GET['Ville_of_edit'])) { 
                             echo '<option value= "'.$Contrats[$i]['Id'].'">'.$Contrats[$i]['TypeContrat'].'</option>';
-                            } ?>
+                            }
+                        }?>
                     </select>
 
                     <label for="listbox">

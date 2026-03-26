@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Contact</title>
+        <link rel="icon" type="image/png" href="../img/Logo2.png">
         <link rel="stylesheet" href="../css/style.css">
 
     </head>
@@ -11,7 +12,7 @@
         <header class="site-header">
             <div class="container header-inner">
                 <a href="index.html" class="logo">
-                    <span class="wave"></span>Lagon<span>Jobs</span>
+                    <img src="../img/Logo.png" alt="Logo">
                 <nav class="nav">
                     <a href="index.php">Tableau de bord</a>
                     <a href="user.php">Utilisateurs</a>
