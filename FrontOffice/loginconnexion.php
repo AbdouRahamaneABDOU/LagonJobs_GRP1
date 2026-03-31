@@ -24,14 +24,6 @@ if (isset($_POST['mail']) && isset($_POST['mdp'])) {
             die('Aucun utilisateur n existe avec cet email');
         }
 
-        var_dump($utilisateur);
-
-        echo "<br/>";
-        echo $_POST["mdp"];
-
-        echo "<br/>";
-        echo $utilisateur["Password"];
-        echo "<br/>";
 
         if (password_verify($_POST["mdp"], $utilisateur["Password"])) {
 
