@@ -1,8 +1,36 @@
 <?php
 require_once(__DIR__ . '/bdd.php');
 
+// Insertion en base
 
+if (isset($_GET['AjoutPrenom']) && empty($_GET['AjoutPrenom'])=== false)
+  if (isset($_GET['AjoutNom']) && empty($_GET['AjoutNom'])=== false)
+    if (isset($_GET['AjoutMail']) && empty($_GET['AjoutMail'])=== false)
+        if (isset($_GET['AjoutMdp']) && empty($_GET['AjoutMdp'])=== false)
+          if (isset($_GET['AjoutConfMdp']) && empty($_GET['AjoutConfMdp'])=== false)
+      {
+        $Prenom = $_GET['AjoutPrenom'];
+        $Nom = $_GET['AjoutNom'];
+        $Mail = $_GET['AjoutMail'];
+        $Mdp = $_GET['AjoutMdp'];
+        $ConfMdp = $_GET['AjoutConfMdp'];
 
+        if ($ConfMdp === $Mdp){
+            // Faire l'insertion
+            $insertCl = $mysqlClient-> prepare('INSERT INTO utilisateurs (Prenom,Nom,Mail,Password) VALUES (:prenom,:nom,:mail,:motdepasse)');
+            $insertCl->execute([
+                'prenom' => $Prenom,
+                'nom' => $Nom,
+                'mail' => $Mail,
+                'motdepasse' => password_hash($Mdp, PASSWORD_DEFAULT),
+                
+            ]);
+       
+            
+        }else {
+            echo "Les mots de passe saisis ne sont pas identiques !";
+        }
+}
 
 
 
@@ -41,32 +69,32 @@ require_once(__DIR__ . '/bdd.php');
             <h1>Inscription</h1>
             
 
-            <form action="login.html" method="GET" class="form">
+            <form action="login.php" method="GET" class="form">
 
                 <div class="row">
                     <div>
                         <label for="">Prénom :</label>
-                        <input type="text">
+                        <input type="text" name="AjoutPrenom">
                     </div>
 
                     <div>
                         <label for="">Nom :</label>
-                        <input type="text">
+                        <input type="text" name="AjoutNom">
                     </div>
                 </div>
 
                 <label for="">Email :</label>
-                <input type="mail">
+                <input type="mail" name="AjoutMail">
 
                 <div class="row">
                     <div>
                         <label for="">Mot de passe :</label>
-                        <input type="password">
+                        <input type="password" name="AjoutMdp">
                     </div>
 
                     <div>
                         <label for="">Confirmer :</label>
-                        <input type="password">
+                        <input type="password" name="AjoutConfMdp">
                     </div>
                 </div>
 

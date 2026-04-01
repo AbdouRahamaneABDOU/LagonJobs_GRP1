@@ -24,7 +24,6 @@ if (isset($_POST['mail']) && isset($_POST['mdp'])) {
             die('Aucun utilisateur n existe avec cet email');
         }
 
-
         if (password_verify($_POST["mdp"], $utilisateur["Password"])) {
 
                 $_SESSION['user'] = [

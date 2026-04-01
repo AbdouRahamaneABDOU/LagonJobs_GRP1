@@ -80,6 +80,7 @@ $ModeTravail=$selectMode->fetchAll();
             <nav class="nav">
                 <a href="index.php">Accueil</a>
                 <a href="offres.php">Offres</a>
+                <a href="candidatures.php">Déposer une candidature</a>
                 <a href="contact.php">Contact</a>
                 <a href="login.php" class="btn btn-outline">Connexion</a>
                 <a href="inscription.php" class="btn btn-outline">Inscription</a>
