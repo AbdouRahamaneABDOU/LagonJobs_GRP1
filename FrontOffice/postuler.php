@@ -1,4 +1,10 @@
 <?php
+// Verifier si la session existe
+session_start();
+if (!isset($_SESSION['user'])) {
+    header('Location: login.php');
+    exit();
+}
 require_once(__DIR__ . '/bdd.php');
 ?>
 
@@ -19,8 +25,14 @@ require_once(__DIR__ . '/bdd.php');
                 <a href="index.php">Accueil</a>
                 <a href="offres.php">Offres</a>
                 <a href="contact.php">Contact</a>
-                <a href="login.php" class="btn btn-outline">Connexion</a>
-                <a href="inscription.php" class="btn btn-outline">Inscription</a>
+                <?php
+                if (isset($_SESSION['user'])) {
+                    echo '<a href="deconnexion.php" class="btn btn-outline">Déconnexion</a>';
+                }else{
+                    echo '<a href="login.php" class="btn btn-outline">Connexion</a>' . 
+                    '<a href="inscription.php" class="btn btn-outline">Inscription</a>';
+                }
+                ?>
             </nav>
         </div>
     </header>

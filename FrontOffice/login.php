@@ -1,7 +1,43 @@
 <?php
 require_once(__DIR__ . '/bdd.php');
 
+// Insertion en base
+
+if (isset($_GET['AjoutPrenom']) && empty($_GET['AjoutPrenom'])=== false)
+  if (isset($_GET['AjoutNom']) && empty($_GET['AjoutNom'])=== false)
+    if (isset($_GET['AjoutMail']) && empty($_GET['AjoutMail'])=== false)
+        if (isset($_GET['AjoutMdp']) && empty($_GET['AjoutMdp'])=== false)
+          if (isset($_GET['AjoutConfMdp']) && empty($_GET['AjoutConfMdp'])=== false)
+      {
+        $Prenom = $_GET['AjoutPrenom'];
+        $Nom = $_GET['AjoutNom'];
+        $Mail = $_GET['AjoutMail'];
+        $Mdp = $_GET['AjoutMdp'];
+        $ConfMdp = $_GET['AjoutConfMdp'];
+
+        if ($ConfMdp !== $Mdp){
+            echo "Les mots de passe saisis ne sont pas identiques !";
+           
+       
+            
+        }else {
+             // Faire l'insertion
+            $insertCl = $mysqlClient-> prepare('INSERT INTO utilisateurs (Prenom,Nom,Mail,Password) VALUES (:prenom,:nom,:mail,:motdepasse)');
+            $insertCl->execute([
+                'prenom' => $Prenom,
+                'nom' => $Nom,
+                'mail' => $Mail,
+                'motdepasse' => password_hash($Mdp, PASSWORD_DEFAULT),
+                
+            ]);
+            
+        }
+}
+
+
+
 ?>
+
 
 
 <!DOCTYPE html>
@@ -22,7 +58,7 @@ require_once(__DIR__ . '/bdd.php');
                 <a href="index.php">Accueil</a>
                 <a href="offres.php">Offres</a>
                 <a href="contact.php">Contact</a>
-                <a href="login.php" class="btn btn-outline">Connexion</a>
+                <a href="inscription.php" class="btn btn-outline">Inscription</a>
             </nav>
         </div>
     </header>
@@ -39,7 +75,7 @@ require_once(__DIR__ . '/bdd.php');
                     <input type="password" name="mdp" >
 
                     <button type="submit" name="envoi" class="btn actions">Se connecter </button>
-                    <button type="submit" class="btn">Créer un compte </button>
+                    <a href="inscription.php" class="btn">Créer un compte </a>
 
                     
 
