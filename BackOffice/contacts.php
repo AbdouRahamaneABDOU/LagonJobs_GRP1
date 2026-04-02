@@ -1,3 +1,14 @@
+<?php
+require_once(__DIR__ . '/bdd.php');
+
+$sqlQuery='SELECT * FROM  Messages ORDER BY Id DESC';
+$selectMsg=$mysqlClient->prepare($sqlQuery);
+$selectMsg->execute();
+$Chat=$selectMsg->fetchAll();
+
+?>
+
+
 <!DOCTYPE html><!-- test commit -->
 <html lang="en">
     <head>
@@ -17,7 +28,7 @@
                     <a href="index.php">Tableau de bord</a>
                     <a href="user.php">Utilisateurs</a>
                     <a href="offre.php">Offres</a>
-                    <a href="contacts.php">Contact</a>
+                    <a href="contacts.php">Messages</a>
                     
                 </nav>
             </div>
@@ -25,38 +36,20 @@
 
     <section class="hero">
         <div class="container">
-        <h1>Contact</h1>
+        <h1>Messages reçus !!!</h1>
+        <br>
+         <?php
+        for($i = 0; $i< count($Chat); $i++) { ?>
+            <div class="card">
+                <p><b>Nom, Prénom : </b> <?php echo $Chat[$i]['Nom'].' '.$Chat[$i]['Prenom']?></p>
+                <p><b>Courriel : </b> <?php echo $Chat[$i]['Email']?></p>
+                <p><b>Sujet : </b> <?php echo $Chat[$i]['Sujet']?></p>
+                <b>Description : </b>
+                <p><?php echo $Chat[$i]['Message']?></p>
+            </div>
+            <br>
+        <?php }?>
 
-            <form action="" method="GET" class="form">
-
-                <div class="row">
-                    <label>
-                        Nom
-                        <input type="text" name="Nom" required>
-                    </label>
-
-                    <label>
-                        Email
-                        <input type="email" name="Email" required>
-                    </label>
-                </div>
-
-                <label>
-                Sujet
-                <input type="text" name="Sujet" required>
-                </label>
-
-                <label>
-                Message
-                <textarea name="Message" required></textarea>
-                </label>
-
-                <div class="actions">
-                    <button type="submit" class="btn">Envoyer</button>
-                    <button type="reset" class="btn">Effacer</button>
-                </div>
-
-            </form> 
         </div>
     </section>
     

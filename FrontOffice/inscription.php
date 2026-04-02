@@ -18,8 +18,8 @@
 
                 <nav class="nav">
                     <a href="index.php">Accueil</a>
-                    <a href="offres.php" class="btn btn-outline">Offres</a>
-                    <a href="contact.php" class="btn btn-outline">Contact</a>
+                    <a href="offres.php">Offres</a>
+                    <a href="contact.php">Contact</a>
                 </nav>
             </div>
         </header>

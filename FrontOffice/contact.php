@@ -1,5 +1,31 @@
 <?php 
 session_start();
+require_once(__DIR__ . '/bdd.php');
+
+//Ajout d'une offre
+if(isset($_POST['Nom']) && !empty($_POST['Nom']) && 
+isset($_POST['Prenom']) && !empty($_POST['Prenom']) && 
+isset($_POST['Email']) && !empty($_POST['Email']) && 
+isset($_POST['Sujet']) && !empty($_POST['Sujet']) && 
+isset($_POST['Message']) && !empty($_POST['Message'])){
+  $nom=$_POST['Nom'];
+  $prenom=$_POST['Prenom'];
+  $mail=$_POST['Email'];
+  $Sujet=$_POST['Sujet'];
+  $Msg=$_POST['Message'];
+
+  $sqlQuery = "INSERT INTO Messages (Nom, Prenom, Email, Sujet, Message) 
+  VALUES (:nom,:prenom,:mail,:sujet,:message)";
+  $insertalerte = $mysqlClient->prepare($sqlQuery);
+  $insertalerte->execute([
+    'nom'=>$nom,
+    'prenom'=>$prenom,
+    'mail'=>$mail,
+    'sujet'=>$Sujet,
+    'message'=>$Msg,
+  ]);
+}
+
 
 ?>
 
@@ -41,7 +67,7 @@ session_start();
       <h1>Contact</h1>
       <p>Une question ? Envoyez-nous un message et un administrateur vous répondra. </p>
 
-    <form action="" method="GET" class="form">
+    <form action="" method="POST" class="form">
 
     <div class="row">
       <label>
@@ -50,15 +76,21 @@ session_start();
       </label>
 
       <label>
-        Email
-        <input type="email" name="Email" required>
+        Prénom
+        <input type="text" name="Prenom" required>
       </label>
     </div>
 
-    <label>
-      Sujet
-      <input type="text" name="Sujet" required>
-    </label>
+      <label>
+        Email
+        <input type="email" name="Email" required>
+      </label>
+
+      <label>
+        Sujet
+        <input type="text" name="Sujet" required>
+      </label>
+
 
     <label>
       Message

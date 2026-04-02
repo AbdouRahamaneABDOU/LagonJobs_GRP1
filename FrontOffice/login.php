@@ -75,11 +75,10 @@ if (isset($_GET['AjoutPrenom']) && empty($_GET['AjoutPrenom'])=== false)
                     <input type="password" name="mdp" >
 
                     <button type="submit" name="envoi" class="btn actions">Se connecter </button>
-                    <a href="inscription.php" class="btn">Créer un compte </a>
 
                     
 
-                    <a href="" class="stack actions">Mot de passe oublié ?</a>
+                    <a href="inscription.php" class="stack actions">Vous n'avez pas de compte ? Inscrivez-vous.</a>
                 </form>
             </div>
         </div>
