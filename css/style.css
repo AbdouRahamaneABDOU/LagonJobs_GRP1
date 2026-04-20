@@ -38,6 +38,7 @@ a:hover{color:var(--lagon)}
   font-weight:600;
   border:2px solid var(--lagon);
   transition:all .2s ease;
+  margin:6px 4px;
 }
 .btn:hover{background:var(--lagon-dark); border-color:var(--lagon-dark); color:#fff}
 .btn-outline{background:transparent; color:var(--lagon-dark)}
